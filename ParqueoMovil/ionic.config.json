@@ -1,0 +1,7 @@
+{
+  "name": "ParqueoMovil",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
