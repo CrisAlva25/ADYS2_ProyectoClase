@@ -10,6 +10,7 @@ export class PerfilUsuarioComponent implements OnInit {
   constructor() { }
 
   usuario = {
+    photo: "https://www.adslzone.net/app/uploads/2019/04/borrar-fondo-imagen.jpg",
     username: "username",
     name: "name",
     email: "email"
