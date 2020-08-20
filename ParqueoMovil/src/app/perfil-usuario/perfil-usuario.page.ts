@@ -7,23 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerfilUsuarioPage implements OnInit {
 
-  // deshabilitar inputs
-  private deshabilitado: boolean;
-
   // info del usuario
-  private usuario;
+  public usuario = {
+    photo: "https://www.adslzone.net/app/uploads/2019/04/borrar-fondo-imagen.jpg",
+    username: "username",
+    name: "name",
+    email: "email",
+    password: "password"
+  };
+
+  oldPassword = "";
+  newPassword = "";
+  conPassword = "";
 
   constructor() {
-    this.deshabilitado = true;
-    this.usuario = {
-      photo: "https://www.adslzone.net/app/uploads/2019/04/borrar-fondo-imagen.jpg",
-      username: "username",
-      name: "name",
-      email: "email"
-    }
   }
 
   ngOnInit() {
   }
-
 }

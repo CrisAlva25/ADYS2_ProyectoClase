@@ -1,42 +1,47 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Informacion de tu cuenta</ion-title>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  
-  <ion-list lines="full" class="ion-no-margin ion-no-padding">
-
-      <ion-avatar>
-        <ion-img [src]="usuario.photo" ></ion-img>
+  <br>
+    <div align="center">
+      <ion-avatar class="ion-margin-start">
+        <img src="{{usuario.photo}}">
       </ion-avatar>
-    
+    </div>
+  <br>
+
+  <ion-text>
+    Información de tu Cuenta
+  </ion-text>
+  <ion-list>
     <ion-item>
-      <ion-label position="stacked">Username </ion-label>
-      <ion-input required type="text" disabled="{{ deshabilitado }}">{{ usuario.username }} </ion-input>
+      <ion-label position="stacked"><strong>Username</strong></ion-label>
+      <ion-input type="text" disabled="true">{{ usuario.username }} </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Username </ion-label>
-      <ion-input required type="text" disabled="{{ deshabilitado }}">{{ usuario.username }} </ion-input>
+      <ion-label position="stacked"><strong>Name</strong> </ion-label>
+      <ion-input required type="text" disabled="true">{{ usuario.name }} </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Username </ion-label>
-      <ion-input required type="text" disabled="{{ deshabilitado }}">{{ usuario.username }} </ion-input>
+      <ion-label position="stacked"><strong>Email</strong> </ion-label>
+      <ion-input required type="text" disabled="true">{{ usuario.email }} </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="stacked">Username </ion-label>
-      <ion-input required type="text" disabled="{{ deshabilitado }}">{{ usuario.username }} </ion-input>
+      <ion-label position="stacked"><strong>Password</strong> </ion-label>
+      <ion-input required type="text" disabled="{{ deshabilitado }}">{{ usuario.password }} </ion-input>
     </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Username </ion-label>
-      <ion-input required type="text" disabled="{{ deshabilitado }}">{{ usuario.username }} </ion-input>
-    </ion-item>
-
   </ion-list>
+  <br>
+
+  <div align="center">
+    <ion-button color="tertiary">Editar</ion-button>
+    <ion-button color="warning">Editar Password</ion-button>
+  </div>
 
 </ion-content>
