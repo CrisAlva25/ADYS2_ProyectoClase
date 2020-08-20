@@ -1,0 +1,134 @@
+<div class="container my-5 bg-light shadow">
+    <div class="py-5 text-center">
+        <img
+            src={{usuario.photo}}
+            alt="perfil"
+            class="d-block mx-auto mb-4 rounded-circle"
+            width="100" height="100"
+            >
+    </div>
+
+    <div class="row text-center">
+        <div class="col-md-12 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                Información de tu Cuenta
+            </h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item text-left">
+                    <h6 class="my-0"><strong>Username</strong></h6>
+                    <p class="text-muted my-0">{{ usuario.username }}</p>
+                </li>
+                <li class="list-group-item text-left">
+                    <h6 class="my-0"><strong>Name</strong></h6>
+                    <p class="text-muted my-0">{{ usuario.name }}</p>
+                </li>
+                <li class="list-group-item text-left">
+                    <h6 class="my-0"><strong>Email</strong></h6>
+                    <p class="text-muted my-0">{{ usuario.email }}</p>
+                </li>
+                <li class="list-group-item text-left">
+                    <h6 class="my-0"><strong>Password</strong></h6>
+                    <p class="text-muted my-0">{{ usuario.password }}</p>
+                </li>
+            </ul>
+
+            <button class="btn btn-info mx-1" data-toggle="modal" data-target="#editModal">Editar</button>
+            <button class="btn btn-warning mx-1" data-toggle="modal" data-target="#editPassword">Editar Password</button>
+        </div>
+    </div>
+
+    <!-- Edicion de usuario -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby= "edit-perfil" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="edit-perfil">Información de la Cuenta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" hidden #closePerfil>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <form class="form-signin mx-4 rounded">
+                        <div class="form-group row">
+                            <label for="edit-username" class="col-sm-2 col-form-label">Username</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="edit-username" name="editarUsername" [(ngModel)]="usuario.username">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="edit-name" class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="edit-name" name="editarName" [(ngModel)]="usuario.name">
+                            </div>
+                        </div>
+  
+                        <div class="form-group row">
+                            <label for="edit-email" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="edit-email" name="editarEmail" [(ngModel)]="usuario.email">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="edit-photo" class="col-sm-2 col-form-label">Photo</label>
+                            <div class="col-sm-10">
+                                <!--<input type="file" class="custom-file-input form-control" id="edit-photo" name="editarPhoto">-->
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="edit-photo" aria-describedby="editarPhoto" accept="image/*" (change)="uploadPhoto($event.target)">
+                                    <label class="custom-file-label" for="edit-photo">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+  
+                  <button type="button" class="btn btn-primary mx-3" (click)="guardarPerfil()">Guardar Cambios</button>
+                  <button type="button" class="btn btn-danger" (click)="closeEditarPerfil()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edicion de password -->
+    <div class="modal fade" id="editPassword" tabindex="-1" role="dialog" aria-labelledby= "edit-password" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title" id="edit-password">Información de la Cuenta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" hidden #closePassword>
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+
+                  <form class="form-signin mx-4 rounded">
+                    <div class="form-group row">
+                      <label for="edit-antpassword" class="col-sm-2 col-form-label">Password anterior</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="edit-antpassword" name="editarAntPassword" [(ngModel)]="oldPassword">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="edit-newpassword" class="col-sm-2 col-form-label">Password nuevo</label>
+                        <div class="col-sm-10">
+                          <input type="password" class="form-control" id="edit-newpassword" name="editarNewPassword" [(ngModel)]="newPassword">
+                        </div>
+                      </div>
+  
+                    <div class="form-group row">
+                      <label for="edit-confirmarpassword" class="col-sm-2 col-form-label">Confirmar</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="edit-confirmarpassword" name="editarConfirmarPassword" [(ngModel)]="conPassword">
+                      </div>
+                    </div>
+  
+                  </form>
+  
+                  <button type="button" class="btn btn-primary mx-3" (click)="guardarPassword()">Guardar Cambios</button>
+                  <button type="button" class="btn btn-danger" (click)="closeEditarPassword()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
