@@ -20,6 +20,8 @@ export class PerfilUsuarioPage implements OnInit {
   newPassword = "";
   conPassword = "";
 
+  changePassword = true;
+
   constructor() {
   }
 
