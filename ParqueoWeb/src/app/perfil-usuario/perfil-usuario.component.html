@@ -32,8 +32,14 @@
                 </li>
             </ul>
 
-            <button class="btn btn-info mx-1" data-toggle="modal" data-target="#editModal">Editar</button>
-            <button class="btn btn-warning mx-1" data-toggle="modal" data-target="#editPassword">Editar Password</button>
+            <button class="btn btn-info mx-1" data-toggle="modal" data-target="#editModal">
+                <i class="fa fa-edit"></i>
+                Editar
+            </button>
+            <button class="btn btn-warning mx-1" data-toggle="modal" data-target="#editPassword">
+                <i class="fa fa-unlock-alt"></i>
+                Editar Password
+            </button>
         </div>
     </div>
 
@@ -82,8 +88,14 @@
                         </div>
                     </form>
   
-                  <button type="button" class="btn btn-primary mx-3" (click)="guardarPerfil()">Guardar Cambios</button>
-                  <button type="button" class="btn btn-danger" (click)="closeEditarPerfil()">Cancelar</button>
+                    <button type="button" class="btn btn-primary mx-3" (click)="guardarPerfil()">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        Guardar Cambios
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="closeEditarPerfil()">
+                        <i class="fa fa-times-circle"></i>
+                        Cancelar
+                    </button>
                 </div>
             </div>
         </div>
@@ -125,8 +137,14 @@
   
                   </form>
   
-                  <button type="button" class="btn btn-primary mx-3" (click)="guardarPassword()">Guardar Cambios</button>
-                  <button type="button" class="btn btn-danger" (click)="closeEditarPassword()">Cancelar</button>
+                    <button type="button" class="btn btn-primary mx-3" (click)="guardarPassword()">
+                        <i class="fa fa-floppy-o"></i>
+                        Guardar Cambios
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="closeEditarPassword()">
+                        <i class="fa fa-times-circle"></i>
+                        Cancelar
+                    </button>
                 </div>
             </div>
         </div>

@@ -6,8 +6,10 @@
 
 <ion-content>
 
-  <ion-card>
-    <img src="{{usuario.photo}}" />
+  <div class="wrapper">
+    <div class="align">
+      <img class="rounded" src="{{usuario.photo}}" height="100"/>
+    </div>
 
     <ion-card-content>
       <ion-item>
@@ -33,7 +35,7 @@
       <br>
 
       <ion-item lines="none">
-        <ion-label>¿Te gustaria cambiar el password?</ion-label>
+        <ion-label>¿Quieres cambiar el password?</ion-label>
         <ion-checkbox color="primary" [(ngModel)]="changePassword" slot="start"></ion-checkbox>
       </ion-item>
 
@@ -53,27 +55,13 @@
       </ion-item>
     </ion-card-content>
 
+  </div>
+
     <!--<ion-card-footer>
       <ion-button slot="start" style="margin-top: 10%; margin-left: 0%" color ="secondary">Confirmar Edición</ion-button>
       <ion-button slot="end" color="warning">Cambiar Password</ion-button>
     </ion-card-footer>-->
-    <ion-row>
-      <ion-col>
-        <ion-button color="primary">
-          <!--<ion-icon name="thumbs-up"></ion-icon>-->
-          <div>Editar</div>
-        </ion-button>
-      </ion-col>
-      <ion-col></ion-col>
-      <ion-col>
-        <ion-button color="danger">
-          <!--<ion-icon name="thumbs-up"></ion-icon>-->
-          <div>Cancelar</div>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-card>
-
+  
   <!--<ion-card>
     <ion-card-header>
       <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
@@ -161,3 +149,33 @@
   </div>
 -->
 </ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col>
+      <div class="align">
+        <ion-button color="primary">
+          Editar
+          <ion-icon name="create" slot="start"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="align">
+        <ion-button color="dark">
+          Home
+          <ion-icon name="home" slot="start"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="align">
+        <ion-button color="danger">
+          Cancelar
+          <ion-icon name="close-circle" slot="start"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-footer>
+

@@ -7,11 +7,13 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
+import { LoginParqueoAdminComponent } from './login-parqueo-admin/login-parqueo-admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PerfilUsuarioComponent
+    PerfilUsuarioComponent,
+    LoginParqueoAdminComponent
   ],
   imports: [
     BrowserModule,

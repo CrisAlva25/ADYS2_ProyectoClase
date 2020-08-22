@@ -1,0 +1,19 @@
+ion-button {
+    text-transform: none;
+}
+
+.wrapper {
+    padding-top: 10px;
+}
+
+.rounded {
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.align {
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+}
