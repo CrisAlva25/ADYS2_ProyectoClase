@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ParqueoWeb"
+    }
+  },
+  "defaultProject": "ParqueoWeb",
+  "cli": {
+    "analytics": false
+  }
 }

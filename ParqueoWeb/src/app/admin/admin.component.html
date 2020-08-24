@@ -1,0 +1,179 @@
+<div class="divbody">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">502 ParkingLot</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/unlock-parking">Parqueos Bloqueados</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/unlock-regular">Usuarios Bloqueados</a>
+          </li>
+        </ul>
+        <!-- To be able to use the info within the form i need to add a name -->
+        <form class="form-inline mt-2 mt-md-0">
+          <input name="searchInput" class="form-control mr-sm-2" type="text" placeholder="Busqueda" aria-label="Search">
+          <button name="searchButton" class="btn btn-outline-success my-2 my-sm-0" type="button">Buscar</button>
+        </form>
+      </div>
+    </nav>
+
+    <!-- Aqui empieza el album -->
+
+    <main>
+        <section class="jumbotron text-center my-5">
+          <div class="container">
+            <h1 class="jumbotron-heading">Administración 502 PL</h1>
+            <p class="lead text-muted">A continuación encontrará la lista de todos los parqueos disponibles, al acceder a alguno podrá ver las opciones que tiene disponibles: eliminar, bloquear y editar. Los botones directamente debajo de este texto permiten crear nuevos administradores y dar seguimiento a solicitudes de servicio de parte de parqueos</p>
+            <p>
+              <a routerLink="/requestsManagement" class="btn btn-primary my-2 mx-1">Solicitudes</a>
+              <a data-toggle="modal" data-target="#adminModal" class="btn btn-secondary text-light my-2 mx-1">Crear Administrador</a>
+            </p>
+          </div>
+        </section>
+
+        <article class="list-group-item">
+          <header class="filter-header">
+            <a href="#" data-toggle="collapse" data-target="#collapse1" aria-expanded="true" class="">
+              <i class="icon-action fa fa-chevron-down"></i>
+              <h6 class="title">Parqueos</h6>
+            </a>
+          </header>
+          <div class="album py-5 bg-light collapse" id="collapse1">
+            <div class="container">
+              <div class="row">
+                
+                <!--<div *ngFor="let parqueo of parqueos; let i = index" class="col-md-4">
+                  <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" data-src="{{parqueo.photo}}" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="card-text">{{parqueo.location}}</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                         <button type="button" class="btn btn-sm btn-outline-secondary" (click)="blockLot(parqueo,i)" >Bloquear</button>
+                          <button data-toggle="modal" data-target="#noticesModal" type="button" class="btn btn-sm btn-outline-secondary" (click)="verNoticias(parqueo,i)">Publicaciones</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>-->
+                
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="list-group-item">
+          <header class="filter-header">
+            <a href="#" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" class="">
+              <i class="icon-action fa fa-chevron-down"></i>
+              <h6 class="title">Usuarios</h6>
+            </a>
+          </header>
+          <div class="album py-5 bg-light collapse" id="collapse2">
+            <div class="container">
+              <div class="row">
+                
+               <!-- <div *ngFor="let regular of regulares; let i = index" class="col-md-4">
+                  <div class="card mb-4 box-shadow">
+                    <img class="card-img-top" data-src="{{regular.photo}}" alt="Card image cap">
+                    <div class="card-body">
+                      <p class="card-text">{{regular.email}}</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-sm btn-outline-secondary" (click)="blockUsu(regular,i)" >Bloquear</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>-->
+                
+              </div>
+            </div>
+          </div>
+        </article>
+    </main>
+
+    <!-- Aqui termina el album -->
+
+    <!-- Aqui Comienza Formulario para crear Admin -->
+    <div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="profilePicTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="profilePicTitle">Crear Administrador</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #infoClose>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group row">
+              <div class="form-group col-md-6">
+                <label for="editNombre">Nombre</label>
+                <input type="text" class="form-control" id="editNombre" [(ngModel)]="admin.name">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="editCorreo">Correo Electrónico</label>
+                <input type="text" class="form-control" id="editCorreo" [(ngModel)]="admin.email">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="editTelefono">Número de Teléfono</label>
+                <input type="text" class="form-control" id="editTelefono" [(ngModel)]="admin.telephone">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="editPassword">Contraseña</label>
+                <input type="text" class="form-control" id="editPassword" [(ngModel)]="admin.password">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <!--<button type="button" class="btn btn-secondary" (click)="cancel()">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="saveData()">Crear</button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Aqui Termina Formulario para crear Admin -->
+
+
+    <!-- Aqui empieza el modal de publicaciones por parqueo -->
+    <div class="modal fade" id="noticesModal" tabindex="-1" role="dialog" aria-labelledby="profilePicTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <!--<h5 class="modal-title" id="profilePicTitle">{{ parkingLot.location || parkingLot.name }}</h5>-->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #noticesClose hidden>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <!--<div *ngFor="let noticia of noticias">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" data-src="{{noticia.photos[0]}}" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">{{noticia.text}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                     <button type="button" class="btn btn-sm btn-outline-danger" (click)="eliminarPublicacion(noticia)">Eliminar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>-->
+            
+          </div>
+          <div class="modal-footer row px-4">
+           <!-- <button type="button" class="btn btn-secondary" (click)="closeNotices()">Cerrar</button>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Aqui terminal el modal de publicaciones por parqueo -->
+</div>
