@@ -8,6 +8,6 @@ ssh ubuntu@3.18.212.171 <<EOF
     nvm install v14.9.0
     npm install
     npm install -g nodemon pm2
-    pm2 restart ecosystem.config.js
+    ng serve --host=0.0.0.0 --disable-host-check
     exit
 EOF
