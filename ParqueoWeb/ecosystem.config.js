@@ -1,7 +1,7 @@
 module.exports = { 
     apps: [{
       name    : "ParqueoWeb",
-      script  : "npm",
-      args    : "start"
+      script  : "ng",
+      args    : "serve"
     }]
   }
