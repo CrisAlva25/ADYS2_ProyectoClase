@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
 import { LoginParqueoAdminComponent } from './login-parqueo-admin/login-parqueo-admin.component';
 import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PerfilUsuarioComponent,
     LoginParqueoAdminComponent,
-    AdminComponent
+    AdminComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
