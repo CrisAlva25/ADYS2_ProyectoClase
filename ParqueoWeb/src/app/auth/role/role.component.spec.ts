@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterParqueoComponent } from './register-parqueo.component';
+import { RoleComponent } from './role.component';
 
-describe('RegisterParqueoComponent', () => {
-  let component: RegisterParqueoComponent;
-  let fixture: ComponentFixture<RegisterParqueoComponent>;
+describe('RoleComponent', () => {
+  let component: RoleComponent;
+  let fixture: ComponentFixture<RoleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterParqueoComponent ]
+      declarations: [ RoleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegisterParqueoComponent);
+    fixture = TestBed.createComponent(RoleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

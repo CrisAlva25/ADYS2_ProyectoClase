@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginParqueoComponent } from './login-parqueo.component';
+import { VerificarEmailComponent } from './verificar-email.component';
 
-describe('LoginParqueoComponent', () => {
-  let component: LoginParqueoComponent;
-  let fixture: ComponentFixture<LoginParqueoComponent>;
+describe('VerificarEmailComponent', () => {
+  let component: VerificarEmailComponent;
+  let fixture: ComponentFixture<VerificarEmailComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginParqueoComponent ]
+      declarations: [ VerificarEmailComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginParqueoComponent);
+    fixture = TestBed.createComponent(VerificarEmailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../service/auth.service';
-import { Observable } from 'rxjs';
+import { AuthService } from '../../servicios/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-verificar-usuario',
-  templateUrl: './verificar-usuario.component.html',
-  styleUrls: ['./verificar-usuario.component.css']
+  selector: 'app-verificar-email',
+  templateUrl: './verificar-email.component.html',
+  styleUrls: ['./verificar-email.component.css']
 })
-export class VerificarUsuarioComponent implements OnInit {
+export class VerificarEmailComponent implements OnInit {
 
   public user: any;
 
@@ -26,10 +25,5 @@ export class VerificarUsuarioComponent implements OnInit {
 
   async sendVerification() {
     await this.auth.sendVerificationEmail();
-  }
-
-  onLogin() {
-    // ir a home o pantalla de bienvenida
-    this.router.navigate(['/login-parking']);
   }
 }

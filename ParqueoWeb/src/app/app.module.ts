@@ -2,33 +2,33 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RestService } from './servicios/rest.service';
-import { AuthService } from "./auth/service/auth.service";;
+import { AuthService } from "./servicios/auth.service";;
 import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
-import { LoginParqueoComponent } from './auth/login-parqueo/login-parqueo.component';
 import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from 'src/environments/environment';
-import { RegisterParqueoComponent } from './auth/register-parqueo/register-parqueo.component';
-import { VerificarUsuarioComponent } from './auth/verificar-usuario/verificar-usuario.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { VerificarEmailComponent } from './auth/verificar-email/verificar-email.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { RoleComponent } from './auth/role/role.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PerfilUsuarioComponent,
-    LoginParqueoComponent,
     AdminComponent,
     LoginComponent,
-    RegisterParqueoComponent,
-    VerificarUsuarioComponent,
-    ForgotPasswordComponent
+    SignupComponent,
+    VerificarEmailComponent,
+    ForgotPasswordComponent,
+    RoleComponent
   ],
   imports: [
     BrowserModule,
