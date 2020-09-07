@@ -78,8 +78,4 @@ export class AuthService {
       console.log(error);
     }
   }
-
-  async currentUser() {
-    return await this.afAuth.currentUser;
-  }
 }

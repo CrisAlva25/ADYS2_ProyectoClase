@@ -68,6 +68,16 @@ export class LoginComponent implements OnInit {
     console.log(user);
 
     if (user && user.emailVerified) {
+
+      // realizar peticion de recuperacion de usuario
+      
+      // suponer lo siguiente
+      // user = { rol, aceptado }
+      // si no hay rol direccionar a la pagina de eleccion de rol de usuario
+      // si hay rol pero es de parqueo verificar si fue aceptado
+      //  -> si no es aceptado direccionar a la paginaa de llenar los datos obligatorios
+      // si todo esta correcto seguir con el dashboard
+
       this.router.navigate(['/admin']);
     } else if (user) {
       this.router.navigate(['/verification-email']);
