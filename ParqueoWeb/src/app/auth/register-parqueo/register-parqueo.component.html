@@ -1,0 +1,43 @@
+<div class="wrapper bg-dark">
+    <div class="col-md-4 mx-auto">
+        <div class="card ">
+            <div class="card-body">
+                <h3 class="text-center">Register your ParkingLot!</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" name="username" [(ngModel)]="usuario.username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Full name</label>
+                        <input type="text" class="form-control" name="name" [(ngModel)]="usuario.name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="number" class="form-control" name="phone" [(ngModel)]="usuario.phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" [(ngModel)]="usuario.email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="usuario.password">
+                    </div>
+                    
+                    <button type="button" class="btn btn-primary btn-block shadow" (click)="onRegister()">Register</button>
+                    <button type="button" class="btn btn-light btn-block shadow"><i class="fa fa-google mr-2"></i>Continuar con Google</button>
+                </form>
+                <div class="form-group mt-3">
+                    <p>
+                        <a [routerLink]="['/login-parking']">Do you have an account?</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

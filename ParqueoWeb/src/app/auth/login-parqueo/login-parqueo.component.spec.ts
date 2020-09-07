@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginParqueoAdminComponent } from './login-parqueo-admin.component';
+import { LoginParqueoComponent } from './login-parqueo.component';
 
-describe('LoginParqueoAdminComponent', () => {
-  let component: LoginParqueoAdminComponent;
-  let fixture: ComponentFixture<LoginParqueoAdminComponent>;
+describe('LoginParqueoComponent', () => {
+  let component: LoginParqueoComponent;
+  let fixture: ComponentFixture<LoginParqueoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginParqueoAdminComponent ]
+      declarations: [ LoginParqueoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginParqueoAdminComponent);
+    fixture = TestBed.createComponent(LoginParqueoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

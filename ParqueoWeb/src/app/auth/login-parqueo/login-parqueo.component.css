@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column; 
     justify-content: center;
-    background-color: #f5f5f5;
+    /*background-color: #f5f5f5;*/
 }
 
 .form-signin {
@@ -86,7 +86,6 @@
 .btn-google {
     /*color: white;*/
     /*background-color: #ea4335;*/
-    
     background-color: #e2e0e0;
 }
 
