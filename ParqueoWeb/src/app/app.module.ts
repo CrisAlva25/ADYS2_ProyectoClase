@@ -10,6 +10,7 @@ import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.componen
 import { LoginParqueoAdminComponent } from './login-parqueo-admin/login-parqueo-admin.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
+import { ParqueoFormComponent } from './parqueo-form/parqueo-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoginComponent } from './login/login.component';
     PerfilUsuarioComponent,
     LoginParqueoAdminComponent,
     AdminComponent,
-    LoginComponent
+    LoginComponent,
+    ParqueoFormComponent
   ],
   imports: [
     BrowserModule,
