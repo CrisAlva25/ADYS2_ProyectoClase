@@ -1,4 +1,6 @@
 <div class="wrapper bg-dark">
+    <app-menubar-inicio></app-menubar-inicio>
+    
     <div class="col-md-3 mx-auto">
         <div class="form rounded">
             <div class="card-body">
@@ -9,6 +11,9 @@
                     <button class="btn btn-google btn-block" (click)="onSignInGoogle()"><i class="fa fa-google"></i> Sign in with <b>Google</b></button>
                 </div>
                 <div class="or-seperator"><i>or</i></div>
+                <div class="alert alert-danger" role="alert" *ngIf="error != null">
+                    {{error.message}}
+                </div>
                 <form>
                     <div class="form-group">
                         <div class="input-group">                

@@ -1,4 +1,6 @@
 <div class="wrapper bg-dark">
+    <app-menubar-inicio></app-menubar-inicio>
+    
     <div class="col-md-4 mx-auto">
         <div class="form rounded">
             <div class="card-body">
@@ -13,8 +15,11 @@
                     </p>
                 </div>
                 <div class="form-group text-center">
-                    <button class="btn btn-primary" (click)="sendVerification()">
-                        Resend verification email
+                    <button class="btn btn-primary mr-2" (click)="sendVerification()">
+                        Resend verification
+                    </button>
+                    <button class="btn btn-success mr-2" (click)="onSignOut()">
+                        SignOut
                     </button>
                 </div>
             </div>

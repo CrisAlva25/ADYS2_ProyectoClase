@@ -1,14 +1,14 @@
 <div class="wrapper bg-dark">
+    <app-menubar-inicio></app-menubar-inicio>
+    
     <div class="col-md-3 mx-auto">
         <div class="form rounded">
             <div class="card-body">
                 <h2 class="text-center"> 502PL Sign up</h2>
                 <div class="or-seperator py-1"></div>
-                <div class="text-center social-btn">
-                    <button class="btn btn-facebook btn-block" (click)="onSignUpFacebook()"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></button>
-                    <button class="btn btn-google btn-block" (click)="onSignUpGoogle()"><i class="fa fa-google"></i> Sign in with <b>Google</b></button>
+                <div class="alert alert-danger" role="alert" *ngIf="error != null">
+                    {{error.message}}
                 </div>
-                <div class="or-seperator"><i>or</i></div>
                 <form>
                     <div class="form-group">
                         <div class="input-group">                

@@ -18,6 +18,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { VerificarEmailComponent } from './auth/verificar-email/verificar-email.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { RoleComponent } from './auth/role/role.component';
+import { MenubarInicioComponent } from './menubar-inicio/menubar-inicio.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RoleComponent } from './auth/role/role.component';
     SignupComponent,
     VerificarEmailComponent,
     ForgotPasswordComponent,
-    RoleComponent
+    RoleComponent,
+    MenubarInicioComponent
   ],
   imports: [
     BrowserModule,

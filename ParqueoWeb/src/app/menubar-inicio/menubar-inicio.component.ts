@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../servicios/auth.service';
+import { AuthService } from '../servicios/auth.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-verificar-email',
-  templateUrl: './verificar-email.component.html',
-  styleUrls: ['./verificar-email.component.css']
+  selector: 'app-menubar-inicio',
+  templateUrl: './menubar-inicio.component.html',
+  styleUrls: ['./menubar-inicio.component.css']
 })
-export class VerificarEmailComponent implements OnInit {
+export class MenubarInicioComponent implements OnInit {
 
   public user$: Observable<firebase.User> = this.auth.afAuth.user;
   public user: any;
@@ -30,10 +30,6 @@ export class VerificarEmailComponent implements OnInit {
         }
       }
     );
-  }
-
-  async sendVerification() {
-    await this.auth.verifyEmail();
   }
 
   async onSignOut() {

@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: LoginComponent },
   { path: 'role', component: RoleComponent },
-  { path: 'verification-email', component: VerificarEmailComponent },
+  { path: 'verify-email', component: VerificarEmailComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'admin', component: AdminComponent}
 ];

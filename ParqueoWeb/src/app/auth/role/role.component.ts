@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../servicios/auth.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-role',
@@ -8,27 +9,45 @@ import { Router } from '@angular/router';
   styleUrls: ['./role.component.css']
 })
 export class RoleComponent implements OnInit {
-
+  
+  public user$: Observable<firebase.User> = this.auth.afAuth.user;
   public user: any;
 
   constructor(public auth: AuthService,
     public router: Router)
   { }
 
-  async ngOnInit() {
+  ngOnInit() {
+    this.user$.subscribe(
+      (fuser) => {
+        if (fuser) {
+          this.user = fuser;
+          console.log(this.user);
+          console.log("role");
+        }
+        else {
+          this.user = null;
+        }
+      }
+    );
   }
 
   ngOnDestroy() {
-    this.auth.logout();
   }
 
-  onParkingUser() {
-    // peticion de modificar role
-    this.router.navigate(['/verification-email']);
+  async onParkingUser() {
+    console.log("parking")
+    
+    if(!(await this.auth.getCurrentUser()).emailVerified){
+      this.router.navigate(['/verify-email']);
+    }
   }
 
-  onRegularUser() {
-    // peticion de modificar role
-    this.router.navigate(['/verification-email']);
+  async onRegularUser() {
+    console.log("regular")
+    
+    if(!(await this.auth.getCurrentUser()).emailVerified){
+      this.router.navigate(['/verify-email']);
+    }
   }
 }
