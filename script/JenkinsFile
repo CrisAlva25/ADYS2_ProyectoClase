@@ -12,7 +12,7 @@ pipeline {
          
       stage('Install dependencies') {
          steps {
-            sh 'npm install'
+            ssh 'npm install'
          }
       }
       
@@ -24,6 +24,9 @@ pipeline {
       stage('Deploy') {
          steps {
             echo 'Deploying...'
+            ssh 'ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com'
+            ssh 'cd ~/ADYS2_ProyectoClase'
+            ssh 'git pull origin master'
          }
       }
    }
