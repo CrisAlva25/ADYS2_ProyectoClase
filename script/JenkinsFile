@@ -24,10 +24,10 @@ pipeline {
       stage('Deploy') {
          steps {
             echo 'Deploying...'
-            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com
-                cd ADYS2_ProyectoClase
-                git pull origin master
-                exit'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com'
+            sh 'cd ADYS2_ProyectoClase'
+            sh 'git pull origin master'
+            sh 'exit'
          }
       }
    }
