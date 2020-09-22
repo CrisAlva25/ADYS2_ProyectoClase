@@ -24,7 +24,7 @@ pipeline {
       stage('Deploy') {
          steps {
             echo 'Deploying...'
-            sh 'ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com'
             sh 'cd ~/ADYS2_ProyectoClase'
             sh 'git pull origin master'
          }
