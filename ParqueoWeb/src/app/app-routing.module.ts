@@ -8,8 +8,10 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { VerificarEmailComponent } from './auth/verificar-email/verificar-email.component';
 import { ForgotPasswordComponent } from "./auth/forgot-password/forgot-password.component";
 import { RoleComponent } from "./auth/role/role.component";
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'user-profile', component: PerfilUsuarioComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: LoginComponent },

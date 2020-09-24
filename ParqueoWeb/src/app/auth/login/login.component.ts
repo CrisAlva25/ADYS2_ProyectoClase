@@ -70,7 +70,7 @@ export class LoginComponent implements OnInit {
         //  -> si no es aceptado direccionar a la paginaa de llenar los datos obligatorios
         // si todo esta correcto seguir con el dashboard
 
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/dashboard']);
       }
       else {
         this.router.navigate(['/verify-email']);

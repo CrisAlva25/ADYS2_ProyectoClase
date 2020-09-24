@@ -19,6 +19,7 @@ import { VerificarEmailComponent } from './auth/verificar-email/verificar-email.
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { RoleComponent } from './auth/role/role.component';
 import { MenubarInicioComponent } from './menubar-inicio/menubar-inicio.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MenubarInicioComponent } from './menubar-inicio/menubar-inicio.componen
     VerificarEmailComponent,
     ForgotPasswordComponent,
     RoleComponent,
-    MenubarInicioComponent
+    MenubarInicioComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
