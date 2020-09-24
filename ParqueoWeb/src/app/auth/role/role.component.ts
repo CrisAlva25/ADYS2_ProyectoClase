@@ -22,8 +22,6 @@ export class RoleComponent implements OnInit {
       (fuser) => {
         if (fuser) {
           this.user = fuser;
-          console.log(this.user);
-          console.log("role");
         }
         else {
           this.user = null;

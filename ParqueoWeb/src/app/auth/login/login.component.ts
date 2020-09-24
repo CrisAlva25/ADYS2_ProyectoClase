@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
         this.checkUser(user);
       }
     } catch (error) {
-      //console.error(error);
       this.error = error;
     }
   }
@@ -42,7 +41,6 @@ export class LoginComponent implements OnInit {
         this.checkUser(user);
       }
     } catch (error) {
-      //console.log(error);
       this.error = error;
     }
   }
@@ -55,7 +53,6 @@ export class LoginComponent implements OnInit {
         this.checkUser(user);
       }
     } catch (error) {
-      //console.log(error);
       this.error = error;
     }
   }

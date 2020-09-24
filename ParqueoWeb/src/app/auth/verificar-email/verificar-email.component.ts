@@ -22,8 +22,6 @@ export class VerificarEmailComponent implements OnInit {
       (fuser) => {
         if (fuser) {
           this.user = fuser;
-          console.log(this.user);
-          console.log("verify-email");
         }
         else {
           this.user = null;

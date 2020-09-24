@@ -20,8 +20,6 @@ export class AuthService {
       (fuser) => {
         if (fuser) {
           this.user = fuser;
-          console.log(this.user);
-          console.log("service")
         }
         else {
           this.user = null;

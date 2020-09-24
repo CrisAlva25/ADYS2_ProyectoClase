@@ -23,7 +23,7 @@ export class ForgotPasswordComponent implements OnInit {
       const email = this.email;
       await this.auth.resetPassword(email);
       window.alert('Email sent, check your inbox!');
-      this.router.navigate(['/login-parking']);
+      this.router.navigate(['/signin']);
     } catch (error) {
       console.log(error);
     }
