@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ayd2-proyecto-f7abf": {
+      "hosting": {
+        "ParqueoWeb": [
+          "ayd2-proyecto-f7abf"
+        ]
+      }
+    }
+  }
+}

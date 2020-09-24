@@ -2,14 +2,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PerfilUsuarioComponent } from "./perfil-usuario/perfil-usuario.component";
-import { LoginParqueoAdminComponent } from './login-parqueo-admin/login-parqueo-admin.component';
 import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { VerificarEmailComponent } from './auth/verificar-email/verificar-email.component';
+import { ForgotPasswordComponent } from "./auth/forgot-password/forgot-password.component";
+import { RoleComponent } from "./auth/role/role.component";
 
 const routes: Routes = [
-  { path: 'perfil-usuario', component: PerfilUsuarioComponent },
-  { path: 'login-parqueo-admin', component: LoginParqueoAdminComponent },
-  { path: 'login-usuario-regular', component: LoginComponent },
+  { path: 'user-profile', component: PerfilUsuarioComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'signin', component: LoginComponent },
+  { path: 'role', component: RoleComponent },
+  { path: 'verify-email', component: VerificarEmailComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'admin', component: AdminComponent}
 ];
 
