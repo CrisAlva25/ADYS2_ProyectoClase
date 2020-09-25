@@ -19,9 +19,9 @@ pipeline {
       stage('Build'){
          steps{
             echo 'Building...'
-            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "sudo date && hostname"'
-            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "sudo cd  ADYS2_ProyectoClase && git pull origin master"'
-            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "sudo cd  ADYS2_ProyectoClase/ParqueoWeb && npm run ng build --prod && pm2 restart all"'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "date && hostname"'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "cd  ADYS2_ProyectoClase && sudo git pull origin master"'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "cd  ADYS2_ProyectoClase/ParqueoWeb && sudo npm run ng build --prod && sudo pm2 restart all"'
          }
       }
       
