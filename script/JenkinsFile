@@ -16,17 +16,18 @@ pipeline {
          }
       }
       
-      stage('Test') {
-         steps {
-            echo 'Testing... hola mundo'
+      stage('Build'){
+         steps{
+            echo 'Building...'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "sudo date && hostname"'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "sudo cd  ADYS2_ProyectoClase && git pull origin master"'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "sudo cd  ADYS2_ProyectoClase/ParqueoWeb && npm run ng build --prod && pm2 restart all"'
          }
       }
       
-      stage('Build'){
-         steps{
-            sh 'ssh -t ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "date && hostname"'
-            sh 'ssh -t ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "cd  ADYS2_ProyectoClase && git pull origin master"'
-            sh 'ssh -t ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "cd  ADYS2_ProyectoClase/ParqueoWeb && npm run ng build --prod && pm2 restart all"'
+      stage('Test') {
+         steps {
+            echo 'Testing... hola mundo'
          }
       }
       
