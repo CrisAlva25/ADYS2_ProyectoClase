@@ -3,19 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PerfilUsuarioComponent } from "./perfil-usuario/perfil-usuario.component";
 import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { VerificarEmailComponent } from './auth/verificar-email/verificar-email.component';
-import { ForgotPasswordComponent } from "./auth/forgot-password/forgot-password.component";
-import { RoleComponent } from "./auth/role/role.component";
+import { SignInComponent } from './login/sign-in/sign-in.component';
+import { SignUpComponent } from './login/sign-up/sign-up.component';
+import { ChooseRolComponent } from './login/choose-rol/choose-rol.component';
 
 const routes: Routes = [
   { path: 'user-profile', component: PerfilUsuarioComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'signin', component: LoginComponent },
-  { path: 'role', component: RoleComponent },
-  { path: 'verify-email', component: VerificarEmailComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'signup', component: SignUpComponent},
+  { path: 'signin', component: SignInComponent},
+  { path: 'chooserol', component: ChooseRolComponent},
   { path: 'admin', component: AdminComponent}
 ];
 

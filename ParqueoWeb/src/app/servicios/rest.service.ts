@@ -26,13 +26,4 @@ export class RestService {
     console.log(serverAddress);
     return this.httpClient.post<any>(address + serverAddress, info, httpOptions);
   }
-
-  PutRequest(serverAddress: string, info: object): Observable<any> {
-    return this.httpClient.put<any>(address + serverAddress, info, httpOptions);
-  }
-
-  DeleteRequest(serverAddress: string): Observable<any> {
-    return this.httpClient.delete<any>(address + serverAddress, httpOptions);
-  }
-
 }

@@ -1,26 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { MenubarInicioComponent } from './menubar-inicio.component';
+import { ChooseRolComponent } from './choose-rol.component';
 
-describe('MenubarInicioComponent', () => {
-  let component: MenubarInicioComponent;
-  let fixture: ComponentFixture<MenubarInicioComponent>;
+describe('ChooseRolComponent', () => {
+  let component: ChooseRolComponent;
+  let fixture: ComponentFixture<ChooseRolComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [AngularFireAuth, AngularFireAuthModule],
-      imports: [AngularFireModule.initializeApp(environment.firebaseConfig), RouterTestingModule.withRoutes([])],
-      declarations: [ MenubarInicioComponent ]
+      imports: [HttpClientTestingModule, AngularFireModule.initializeApp(environment.firebaseConfig), RouterTestingModule.withRoutes([])],
+      declarations: [ ChooseRolComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MenubarInicioComponent);
+    fixture = TestBed.createComponent(ChooseRolComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
