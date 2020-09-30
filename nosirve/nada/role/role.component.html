@@ -1,0 +1,46 @@
+<div class="wrapper bg-dark">
+    <app-menubar-inicio></app-menubar-inicio>
+
+    <div class="col-md-3 mx-auto">
+        <div class="rounded">
+                <div class="card-body">
+                    <div class="alert {{notify.type === 'success'? 'alert-success': 'alert-danger'}} text-center" role="alert" *ngIf="notify.active">
+                        <div class="card-body" *ngIf="notify.type === 'success'; else error">
+                            <h5 class="card-title"><strong>{{notify.title}}</strong></h5>
+                            <p class="card-text">{{notify.message}}</p>
+                        </div>
+                        <ng-template #error>
+                            {{notify.message}}
+                        </ng-template>
+                    </div>
+
+                    <div class="card bg-primary mb-3"> <!--style="max-width: 18rem;"-->
+                        <button class="btn btn-button btn-primary" (click)="onParkingUser()"><!--data-toggle="modal" data-target="#exampleModal"-->
+                            <div class="card-body">
+                                <h5 class="card-title">Owner user</h5>
+                                <!--<p class="card-text">Manage news and promotions for a parking lot.</p>-->
+                            </div>
+                        </button>
+                    </div>
+                
+                    <div class="card bg-danger mb-3">
+                        <button class="btn btn-button btn-danger" (click)="onRegularUser()">
+                            <div class="card-body">
+                                <h5 class="card-title">Regular user</h5>
+                                <!--<p class="card-text">Uses parking, can report users and parking and other functions.</p>-->
+                            </div>
+                        </button>
+                    </div>
+
+                    <div class="card bg-success">
+                        <button class="btn btn-button btn-success" (click)="onConfirm()">
+                            <div class="card-body">
+                                <h5 class="card-title">Confirm</h5>
+                                <!--<p class="card-text">You must confirm if you are a regular user or a parking owner.</p>-->
+                            </div>
+                        </button>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

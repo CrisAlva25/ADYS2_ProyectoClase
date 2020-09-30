@@ -1,0 +1,57 @@
+<div class="wrapper bg-dark">
+    <div class="mx-auto"> <!--col-md-3-->
+        <div class="rounded">
+                <div class="card-body">
+                    <div class="card bg-info mb-3"> <!--style="max-width: 18rem;"-->
+                        <div class="text-center text-white">
+                            <div class="card-body">
+                                <h5 class="card-title">Choose Role</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card bg-primary mb-3"> <!--style="max-width: 18rem;"-->
+                        <button class="btn btn-button btn-primary" (click)="onOwner()" data-toggle="modal" data-target="#confirmModal">
+                            <div class="card-body">
+                                <h5 class="card-title">Owner user</h5>
+                            </div>
+                        </button>
+                    </div>
+                
+                    <div class="card bg-danger mb-3">
+                        <button class="btn btn-button btn-danger" (click)="onRegular()" data-toggle="modal" data-target="#confirmModal">
+                            <div class="card-body">
+                                <h5 class="card-title">Regular user</h5>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirm" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-light">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirm">{{notify.title}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" #confirmClose>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        {{notify.message}}
+                    </p>
+                    <p>
+                        <strong>You must confirm the role for your user account.</strong>
+                    </p>
+                </div>
+                <div class="modal-footer" (click)="onConfirm()">
+                    <button class="btn btn-button btn-success" >
+                        Confirm role
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

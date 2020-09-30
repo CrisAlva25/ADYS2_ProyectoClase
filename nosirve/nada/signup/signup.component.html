@@ -4,15 +4,10 @@
     <div class="col-md-3 mx-auto">
         <div class="form rounded">
             <div class="card-body">
-                <h2 class="text-center"> 502PL Sign in</h2>
+                <h2 class="text-center"> 502PL Sign up</h2>
                 <div class="or-seperator py-1"></div>
-                <div class="text-center social-btn">
-                    <button class="btn btn-facebook btn-block" (click)="onSignInFacebook()"><i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></button>
-                    <button class="btn btn-google btn-block" (click)="onSignInGoogle()"><i class="fa fa-google"></i> Sign in with <b>Google</b></button>
-                </div>
-                <div class="or-seperator"><i>or</i></div>
-                <div class="alert alert-danger" role="alert" *ngIf="error != null">
-                    {{error.message}}
+                <div class="alert {{notify.type === 'success'? 'alert-success': 'alert-danger'}}" role="alert" *ngIf="notify.active">
+                    {{notify.message}}
                 </div>
                 <form>
                     <div class="form-group">
@@ -38,17 +33,13 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-success btn-block login-btn" (click)="onSignIn()">Sign in</button>
-                    </div>
-
-                    <div class="hint-text">
-                        <a [routerLink]="['/forgot-password']" class="float-left text-success">Forgot Password?</a>
+                        <button type="button" class="btn btn-success btn-block login-btn" (click)="onSignUp()">Sign up</button>
                     </div>
                 </form>
             </div>
             <div class="text-muted hint-text">
-                Don't have an account? 
-                <a [routerLink]="['/signup']" class="text-success">Sign up!</a>
+                Do you have an account? 
+                <a [routerLink]="['/signin']" class="text-success">Sign in!</a>
             </div>
         </div>
     </div>

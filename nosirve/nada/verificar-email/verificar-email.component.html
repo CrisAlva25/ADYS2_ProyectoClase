@@ -13,14 +13,18 @@
                         Please verify your email and click the link to verify your email
                         address.
                     </p>
+                    <p class="">
+                        <strong>If you do not verify your email, your account will be deleted.</strong>
+                    </p>
                 </div>
                 <div class="form-group text-center">
                     <button class="btn btn-primary mr-2" (click)="sendVerification()">
                         Resend verification
                     </button>
-                    <button class="btn btn-success mr-2" (click)="onSignOut()">
-                        SignOut
+                    <button class="btn btn-danger mr-2" (click)="onVerify()">
+                        Verify
                     </button>
+                    <!--<a [routerLink]="['/role']">lopajs</a>-->
                 </div>
             </div>
         </div>
