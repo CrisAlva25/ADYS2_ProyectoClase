@@ -6,8 +6,10 @@ import { AdminComponent } from './admin/admin.component';
 import { SignInComponent } from './login/sign-in/sign-in.component';
 import { SignUpComponent } from './login/sign-up/sign-up.component';
 import { ChooseRolComponent } from './login/choose-rol/choose-rol.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'user-profile', component: PerfilUsuarioComponent },
   { path: 'signup', component: SignUpComponent},
   { path: 'signin', component: SignInComponent},

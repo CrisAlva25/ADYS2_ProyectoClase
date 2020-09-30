@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { SignInComponent } from './login/sign-in/sign-in.component';
 import { SignUpComponent } from './login/sign-up/sign-up.component';
 import { ChooseRolComponent } from './login/choose-rol/choose-rol.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ChooseRolComponent } from './login/choose-rol/choose-rol.component';
     AdminComponent,
     SignInComponent,
     SignUpComponent,
-    ChooseRolComponent
+    ChooseRolComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
