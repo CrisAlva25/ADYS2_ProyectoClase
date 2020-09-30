@@ -3,24 +3,25 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../../environments/environment';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { VerificarEmailComponent } from './verificar-email.component';
+import { SignInComponent } from './sign-in.component';
 
-describe('VerificarEmailComponent', () => {
-  let component: VerificarEmailComponent;
-  let fixture: ComponentFixture<VerificarEmailComponent>;
+describe('SignInComponent', () => {
+  let component: SignInComponent;
+  let fixture: ComponentFixture<SignInComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [AngularFireAuth, AngularFireAuthModule],
-      imports: [AngularFireModule.initializeApp(environment.firebaseConfig), RouterTestingModule.withRoutes([])],
-      declarations: [ VerificarEmailComponent ]
+      imports: [HttpClientTestingModule, AngularFireModule.initializeApp(environment.firebaseConfig), RouterTestingModule.withRoutes([])],
+      declarations: [ SignInComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VerificarEmailComponent);
+    fixture = TestBed.createComponent(SignInComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
