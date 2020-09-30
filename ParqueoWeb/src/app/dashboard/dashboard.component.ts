@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { RestService } from '../servicios/rest.service';
+
+const REQUEST_ADDRESS = 'all-parking-accepted';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,21 +11,22 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   currentLot = {
-    _id: 'lasdkfnasd',
-    photo: '../assets/user.png',
+    idUser: 'lasdkfnasd',
+    idParking: 'asa',
+    photo: 'https://cdn.ticbeat.com/src/uploads/2018/02/vender-fotos-por-internet-810x540.jpeg',
     name: '',
     email: '',
     phone: '',
-    location: 'donde el diablo dejo el caite',
-    password: '',
+    location: 'zona 1',
     status: 'Cerrado',
     tariff: '',
     numberAvailable: 100,
-    services: [],
-    photos: [ '../assets/user.png', '../assets/img1.jpg', '../assets/img2.jpg', '../assets/img3.jpg']
+    numberCapacity: 100,
+    photos: [ 'https://cdn.ticbeat.com/src/uploads/2018/02/vender-fotos-por-internet-810x540.jpeg', 'https://cdn.ticbeat.com/src/uploads/2018/02/vender-fotos-por-internet-810x540.jpeg']
   };
 
-  parqueos = [this.currentLot];
+  parqueos = [];
+  //[this.currentLot, this.currentLot, this.currentLot, this.currentLot, this.currentLot, this.currentLot, this.currentLot];
 
   currentPhoto = 0;
 
@@ -30,9 +34,17 @@ export class DashboardComponent implements OnInit {
   @ViewChild('infoClose', { static: false }) infoClose: ElementRef;
   @ViewChild('newsClose', { static: false }) newsClose: ElementRef;
 
-  constructor() { }
+  constructor(public rest: RestService)
+  { }
 
   ngOnInit(): void {
+    this.getParqueos();
+  }
+
+  async getParqueos() {
+    try {
+      this.parqueos = await this.rest.GetRequest(REQUEST_ADDRESS).toPromise();
+    } catch (error) { }
   }
 
   next(): void {
@@ -52,5 +64,9 @@ export class DashboardComponent implements OnInit {
 
   closeNewsModal(): void {
     this.newsClose.nativeElement.click();
+  }
+
+  changeCurrentLot(parqueo) {
+    this.currentLot = parqueo;
   }
 }

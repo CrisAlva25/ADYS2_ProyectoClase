@@ -83,9 +83,12 @@ export class SignInComponent implements OnInit {
         this.router.navigate(['/chooserol']);
       } else if (usr.rol === 'admin'){
         this.router.navigate(['/admin']);
+      } else if (usr.rol === 'owner') {
+        //this.router.navigate(['/dashboard']);
+        console.log('dashboard owner');
       } else {
         //this.router.navigate(['/dashboard']);
-        console.log('dashboard');
+        console.log('dashboard regular');
       }
     } catch (error) {
       this.notify = getNotify(true, 'error', '',  (error.error)? error.error: error.message);
