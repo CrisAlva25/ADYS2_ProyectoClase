@@ -7,6 +7,7 @@ import { SignInComponent } from './login/sign-in/sign-in.component';
 import { SignUpComponent } from './login/sign-up/sign-up.component';
 import { ChooseRolComponent } from './login/choose-rol/choose-rol.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PantallaBienvenidaComponent } from './pantalla-bienvenida/pantalla-bienvenida.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'signup', component: SignUpComponent},
   { path: 'signin', component: SignInComponent},
   { path: 'chooserol', component: ChooseRolComponent},
-  { path: 'admin', component: AdminComponent}
+  { path: 'admin', component: AdminComponent},
+  { path: 'welcome', component: PantallaBienvenidaComponent}
 ];
 
 @NgModule({
