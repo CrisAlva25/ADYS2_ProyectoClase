@@ -2,14 +2,18 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { PerfilUsuarioComponent } from "./perfil-usuario/perfil-usuario.component";
-import { LoginParqueoAdminComponent } from './login-parqueo-admin/login-parqueo-admin.component';
 import { AdminComponent } from './admin/admin.component';
-import { LoginComponent } from './login/login.component';
+import { SignInComponent } from './login/sign-in/sign-in.component';
+import { SignUpComponent } from './login/sign-up/sign-up.component';
+import { ChooseRolComponent } from './login/choose-rol/choose-rol.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: 'perfil-usuario', component: PerfilUsuarioComponent },
-  { path: 'login-parqueo-admin', component: LoginParqueoAdminComponent },
-  { path: 'login-usuario-regular', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'user-profile', component: PerfilUsuarioComponent },
+  { path: 'signup', component: SignUpComponent},
+  { path: 'signin', component: SignInComponent},
+  { path: 'chooserol', component: ChooseRolComponent},
   { path: 'admin', component: AdminComponent}
 ];
 
