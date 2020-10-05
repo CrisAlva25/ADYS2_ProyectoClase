@@ -7,14 +7,16 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ChooseRolComponent } from './auth/choose-rol/choose-rol.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FollowUpComponent } from './auth/follow-up/follow-up.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'user-profile', component: PerfilUsuarioComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
   { path: 'chooserol', component: ChooseRolComponent},
-  { path: 'admin', component: AdminComponent}
+  { path: 'followup', component: FollowUpComponent},
+  { path: 'user-profile', component: PerfilUsuarioComponent },
+  { path: 'admin', component: AdminComponent},
 ];
 
 @NgModule({

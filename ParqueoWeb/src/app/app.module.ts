@@ -16,6 +16,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ChooseRolComponent } from './auth/choose-rol/choose-rol.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FollowUpComponent } from './auth/follow-up/follow-up.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     RegisterComponent,
     ChooseRolComponent,
-    DashboardComponent
+    DashboardComponent,
+    FollowUpComponent
   ],
   imports: [
     BrowserModule,
