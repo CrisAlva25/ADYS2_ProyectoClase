@@ -7,11 +7,11 @@ import { Notify, getNotify } from "../../interface/Notify";
 const REQUEST_ADDRESS = 'register';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   public notify: Notify = {};
   public usuario =  {
     name: '',
@@ -90,7 +90,7 @@ export class SignUpComponent implements OnInit {
     try {
       let usr = await this.rest.PostRequest(REQUEST_ADDRESS, user).toPromise();
       sessionStorage.setItem('user', JSON.stringify(usr));
-      sessionStorage.setItem('navegacion', 'signup');
+      sessionStorage.setItem('navegacion', 'register');
       
       this.router.navigate(['/chooserol']);
     } catch (error) {

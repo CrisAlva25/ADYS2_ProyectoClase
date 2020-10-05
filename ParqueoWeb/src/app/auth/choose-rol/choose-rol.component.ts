@@ -29,14 +29,14 @@ export class ChooseRolComponent implements OnInit {
   }
 
   onOwner() {
-    this.notify = getNotify(true, 'success', 'Owner user',
-    'The owner user can publish news, promotions, update information related to a parking lot, such as rate, status, available places, capacity, etc. Also, you can report users for misuse.');
+    this.notify = getNotify(true, 'success', 'Dueño de parqueo',
+    'El usuario propietario puede publicar noticias, promociones, actualizar información relacionada con un parqueo, como tarifa, estado, lugares disponibles, capacidad, etc. Además, puede denunciar a los usuarios por mal uso.');
     this.rol = 'owner';
   }
 
   onRegular() {
-    this.notify = getNotify(true, 'success', 'Regular user', 
-    'Regular user can post news, mark parking, search parking by address, etc. Also, you can report users for misuse.');
+    this.notify = getNotify(true, 'success', 'Usuario regular', 
+    'El usuario habitual puede publicar noticias, marcar parqueo, buscar parqueo por dirección, etc. Además, puede denunciar a los usuarios por mal uso.');
     this.rol = 'regular';
   }
 
@@ -45,9 +45,9 @@ export class ChooseRolComponent implements OnInit {
       await this.rest.PostRequest(REQUEST_ADDRESS, { id: this.user.id, rol: this.rol }).toPromise();
       this.confirmClose.nativeElement.click();
 
-      if(this.navegacion === 'signup') {
+      if(this.navegacion === 'register') {
         sessionStorage.clear();
-        this.router.navigate(['/signin']);
+        this.router.navigate(['/login']);
       } else if (this.rol === 'admin') {
         this.router.navigate(['/admin']);
       } else {

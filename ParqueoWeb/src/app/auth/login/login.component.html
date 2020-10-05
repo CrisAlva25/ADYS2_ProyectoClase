@@ -1,10 +1,15 @@
 <div class="wrapper bg-dark">
-    <div class="mx-auto"><!--col-md-3-->
+    <div class="mx-auto"><!--col-md-3 -->
         <div class="form rounded">
             <div class="card-body">
-                <h2 class="text-center"> 502PL Registro</h2>
+                <h3 class="text-center">502PL Iniciar Sesion</h3>
                 <div class="or-seperator py-1"></div>
-                <div class="alert {{notify.type === 'success'? 'alert-success': 'alert-danger'}}" role="alert" *ngIf="notify.active">
+                <div class="text-center social-btn">
+                    <button class="btn btn-facebook btn-block" (click)="onLoginFacebook()"><i class="fa fa-facebook"></i> Iniciar sesion con <b>Facebook</b></button>
+                    <button class="btn btn-google btn-block" (click)="onLoginGoogle()"><i class="fa fa-google"></i> Iniciar sesion con <b>Google</b></button>
+                </div>
+                <div class="or-seperator py-1"></div>
+                <div class="alert alert-danger" role="alert" *ngIf="notify.active">
                     {{notify.message}}
                 </div>
                 <form>
@@ -29,18 +34,13 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-success btn-block login-btn" (click)="onRegister()">Registrar</button>
+                        <button type="button" class="btn btn-success btn-block login-btn" (click)="onLoginEmail()">Iniciar</button>
                     </div>
                 </form>
-                <div class="or-seperator"><i>or</i></div>
-                <div class="text-center social-btn">
-                    <button class="btn btn-facebook btn-block" (click)="onRegisterFacebook()"><i class="fa fa-facebook"></i> Registrar con <b>Facebook</b></button>
-                    <button class="btn btn-google btn-block" (click)="onRegisterGoogle()"><i class="fa fa-google"></i> Registrar con <b>Google</b></button>
-                </div>
             </div>
             <div class="text-muted hint-text">
-                Tiene usted una cuenta? 
-                <a [routerLink]="['/signin']" class="text-success">Iniciar sesion!</a>
+                No tengo una cuenta? 
+                <a [routerLink]="['/register']" class="text-success">Registrar!</a>
             </div>
         </div>
     </div>

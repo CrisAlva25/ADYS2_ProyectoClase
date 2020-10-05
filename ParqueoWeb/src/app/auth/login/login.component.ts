@@ -4,14 +4,14 @@ import { AuthService } from 'src/app/servicios/auth.service';
 import { RestService } from 'src/app/servicios/rest.service';
 import { getNotify, Notify } from "../../interface/Notify";
 
-const REQUEST_ADDRESS = 'sign-in';
+const REQUEST_ADDRESS = 'login';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class SignInComponent implements OnInit {
+export class LoginComponent implements OnInit {
   public notify: Notify = {};
   public usuario = {
     email: "",
@@ -27,24 +27,24 @@ export class SignInComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async onSignInFacebook() {
+  async onLoginFacebook() {
     try {
       const { user } = await this.auth.authWithFacebook();
       this.usuario.email = user.email;
       this.usuario.provider = 'facebook';
-      this.signIn();
+      this.login();
     } catch (error) {
       console.log(error);
       this.notify = getNotify(true, 'error', '', error.message);
     }
   }
 
-  async onSignInGoogle() {
+  async onLoginGoogle() {
     try {
       const { user } = await this.auth.authWithGoogle();
       this.usuario.email = user.email;
       this.usuario.provider = 'facebook';
-      this.signIn();
+      this.login();
     } catch (error) {
       console.log(error);
       this.notify = getNotify(true, 'error', '', error.message);
@@ -55,31 +55,31 @@ export class SignInComponent implements OnInit {
     const { email, password } = this.usuario;
 
     if(email === '') {
-      this.notify = getNotify(true, 'error', '', 'Email required');
+      this.notify = getNotify(true, 'error', '', 'Correo requerido');
       return false;
     }
     if(!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(email)) {
-      this.notify = getNotify(true, 'error', '', 'The email address is badly formatted');
+      this.notify = getNotify(true, 'error', '', 'Formato incorrecto en su direccion de correo electronico');
       return false;
     }
     if(password === '') {
-      this.notify = getNotify(true, 'error', '', 'Password required');
+      this.notify = getNotify(true, 'error', '', 'Contraseña requerido');
       return false;
     }
     return true;
   }
 
-  onSignInEmail() {
+  onLoginEmail() {
     if (!this.checkFields()) return;
     this.usuario.provider = 'email';
-    this.signIn();
+    this.login();
   }
 
-  async signIn() {
+  async login() {
     try {
       let usr = await this.rest.PostRequest(REQUEST_ADDRESS, this.usuario).toPromise();
       sessionStorage.setItem('user', JSON.stringify(usr));
-      sessionStorage.setItem('navegacion', 'signin');
+      sessionStorage.setItem('navegacion', 'login');
       
       if(usr.rol === '') {
         this.router.navigate(['/chooserol']);

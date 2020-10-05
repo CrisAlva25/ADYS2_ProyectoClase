@@ -5,7 +5,7 @@
                     <div class="card bg-info mb-3"> <!--style="max-width: 18rem;"-->
                         <div class="text-center text-white">
                             <div class="card-body">
-                                <h5 class="card-title">Choose Role</h5>
+                                <h5 class="card-title">Elegir Rol</h5>
                             </div>
                         </div>
                     </div>
@@ -13,7 +13,7 @@
                     <div class="card bg-primary mb-3"> <!--style="max-width: 18rem;"-->
                         <button class="btn btn-button btn-primary" (click)="onOwner()" data-toggle="modal" data-target="#confirmModal">
                             <div class="card-body">
-                                <h5 class="card-title">Owner user</h5>
+                                <h5 class="card-title">Dueño de parqueo</h5>
                             </div>
                         </button>
                     </div>
@@ -21,7 +21,7 @@
                     <div class="card bg-danger mb-3">
                         <button class="btn btn-button btn-danger" (click)="onRegular()" data-toggle="modal" data-target="#confirmModal">
                             <div class="card-body">
-                                <h5 class="card-title">Regular user</h5>
+                                <h5 class="card-title">Usuario regular</h5>
                             </div>
                         </button>
                     </div>
@@ -43,12 +43,12 @@
                         {{notify.message}}
                     </p>
                     <p>
-                        <strong>You must confirm the role for your user account.</strong>
+                        <strong>Debe confirmar el rol de su cuenta de usuario.</strong>
                     </p>
                 </div>
                 <div class="modal-footer" (click)="onConfirm()">
                     <button class="btn btn-button btn-success" >
-                        Confirm role
+                        Confirmar Rol
                     </button>
                 </div>
             </div>
