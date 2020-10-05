@@ -8,7 +8,7 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './admin/admin/admin.component';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from 'src/environments/environment';
@@ -17,6 +17,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ChooseRolComponent } from './auth/choose-rol/choose-rol.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FollowUpComponent } from './auth/follow-up/follow-up.component';
+import { RequestManagementComponent } from './admin/request-management/request-management.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FollowUpComponent } from './auth/follow-up/follow-up.component';
     RegisterComponent,
     ChooseRolComponent,
     DashboardComponent,
-    FollowUpComponent
+    FollowUpComponent,
+    RequestManagementComponent
   ],
   imports: [
     BrowserModule,

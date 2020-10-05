@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RestService } from '../servicios/rest.service';
 
-const REQUEST_ADDRESS = 'all-parking-accepted';
+const REQUEST_ADDRESS = 'all-parking';
 
 @Component({
   selector: 'app-dashboard',

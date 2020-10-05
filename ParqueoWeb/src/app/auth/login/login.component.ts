@@ -4,7 +4,8 @@ import { AuthService } from 'src/app/servicios/auth.service';
 import { RestService } from 'src/app/servicios/rest.service';
 import { getNotify, Notify } from "../../interface/Notify";
 
-const REQUEST_ADDRESS = 'login';
+const REQUEST_LOGIN = 'login';
+const REQUEST_PARK = 'get-parking';
 
 @Component({
   selector: 'app-login',
@@ -77,20 +78,26 @@ export class LoginComponent implements OnInit {
 
   async login() {
     try {
-      let usr = await this.rest.PostRequest(REQUEST_ADDRESS, this.usuario).toPromise();
+      let usr = await this.rest.PostRequest(REQUEST_LOGIN, this.usuario).toPromise();
       sessionStorage.setItem('user', JSON.stringify(usr));
       sessionStorage.setItem('navegacion', 'login');
       
-      if(usr.rol === '') {
+      if(usr.rol === null) {
         this.router.navigate(['/chooserol']);
+
       } else if (usr.rol === 'admin'){
         this.router.navigate(['/admin']);
+
       } else if (usr.rol === 'owner') {
-        //this.router.navigate(['/dashboard']);
-        console.log('dashboard owner');
+        let park = await this.rest.PostRequest(REQUEST_PARK, usr).toPromise();
+        if(park.authorized) {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/followup']);
+        }
+        
       } else {
-        //this.router.navigate(['/dashboard']);
-        console.log('dashboard regular');
+        this.router.navigate(['/dashboard']);
       }
     } catch (error) {
       console.log(error);

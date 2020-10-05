@@ -8,7 +8,7 @@
     </div>-->
     <div class="form-signin mx-4 my-5 rounded">
         <h1 class="h3 mb-3 font-weight-normal text-light">Pasos a Seguir</h1>
-        <div class="alert alert-danger" role="alert" *ngIf="notify.active">{{notify.message}}</div>
+        <div class="alert {{notify.type === 'error'? 'alert-danger': 'alert-success'}}" role="alert" *ngIf="notify.active">{{notify.message}}</div>
         <button class="btn btn-lg btn-secondary bot my-1" type="button" [disabled]="datos[0].loaded" data-toggle="modal"  data-target="#profilePicModal">Foto de Perfil</button>
         <button class="btn btn-lg btn-secondary bot my-1" type="button" [disabled]="datos[1].loaded" data-toggle="modal"  data-target="#dpiModal">DPI</button>
         <button class="btn btn-lg btn-secondary bot my-1" type="button" [disabled]="datos[2].loaded" data-toggle="modal"  data-target="#policeModal">Antecedentes Policiacos</button>
@@ -30,7 +30,7 @@
             <div class="form-group row">
               <label for="profileP" class="form-control custom-file-label">Cargar</label>
               <input #profilePhoto type="file" accept="image/*" class="custom-file-input" id="profileP" (change)="showPreview($event, 1)">
-              <img *ngIf="datos[0].src" [src]="datos[0].src" alt="Vista Previa" class="img-thumbnail m-3">
+              <img *ngIf="datos[0].src" [src]="datos[0].src" alt="Vista Previa" class="img-thumbnail">
             </div>
           </div>
           <div class="modal-footer">
@@ -55,7 +55,7 @@
             <div class="form-group row">
               <label for="dpiPhoto" class="custom-file-label">Cargar</label>
               <input #dpiPhoto type="file" accept="image/*" class="custom-file-input" id="dpiPhoto" (change)="showPreview($event, 2)">
-              <img *ngIf="datos[1].src" [src]="datos[1].src" alt="Vista Previa" class="img-thumbnail m-3">
+              <img *ngIf="datos[1].src" [src]="datos[1].src" alt="Vista Previa" class="img-thumbnail">
             </div>
           </div>
           <div class="modal-footer">
@@ -80,7 +80,7 @@
             <div class="form-group row">
               <label for="policePhoto" class="custom-file-label">Cargar</label>
               <input #policePhoto type="file" accept="image/*" class="custom-file-input" id="policePhoto" (change)="showPreview($event, 3)">
-              <img *ngIf="datos[2].src" [src]="datos[2].src" alt="Vista Previa" class="img-thumbnail m-3">
+              <img *ngIf="datos[2].src" [src]="datos[2].src" alt="Vista Previa" class="img-thumbnail">
             </div>
           </div>
           <div class="modal-footer">

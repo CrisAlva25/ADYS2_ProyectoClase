@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { RestService } from 'src/app/servicios/rest.service';
 import { Notify, getNotify } from "../../interface/Notify";
 
-const REQUEST_ADDRESS = 'update-rol';
+const REQUEST_ROL = 'update-rol';
+const REQUEST_PARK = 'get-parking';
 
 @Component({
   selector: 'app-choose-rol',
@@ -42,17 +43,25 @@ export class ChooseRolComponent implements OnInit {
 
   async onConfirm() {
     try {
-      await this.rest.PostRequest(REQUEST_ADDRESS, { id: this.user.id, rol: this.rol }).toPromise();
+      this.user = await this.rest.PostRequest(REQUEST_ROL, { id: this.user.id, rol: this.rol }).toPromise();
+      sessionStorage.setItem('user', JSON.stringify(this.user));
       this.confirmClose.nativeElement.click();
 
+      
       if(this.navegacion === 'register') {
         sessionStorage.clear();
         this.router.navigate(['/login']);
-      } else if (this.rol === 'admin') {
-        this.router.navigate(['/admin']);
+
+      } else if (this.rol === 'owner') {
+        let park = await this.rest.PostRequest(REQUEST_PARK, this.user).toPromise();
+        if(park.authorized) {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/followup']);
+        }
+        
       } else {
-        //this.router.navigate(['/dashboard']);
-        console.log('dashboard');
+        this.router.navigate(['/dashboard']);
       }
     } catch (error) { }
   }

@@ -4,6 +4,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../../environments/environment';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from "@angular/forms";
 
 import { RegisterComponent } from './register.component';
 
@@ -14,7 +15,7 @@ describe('RegisterComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [AngularFireAuth, AngularFireAuthModule],
-      imports: [HttpClientTestingModule, AngularFireModule.initializeApp(environment.firebaseConfig), RouterTestingModule.withRoutes([])],
+      imports: [FormsModule, HttpClientTestingModule, AngularFireModule.initializeApp(environment.firebaseConfig), RouterTestingModule.withRoutes([])],
       declarations: [ RegisterComponent ]
     })
     .compileComponents();
