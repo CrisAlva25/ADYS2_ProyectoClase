@@ -64,16 +64,38 @@ export class RegisterComponent implements OnInit {
   }
   
   checkFields(): boolean {
-    const { email, password } = this.usuario;
+    if(this.checkEmail()) {
+      return false;
+    }
+    if(this.checkEmailFormato()) {
+      return false;
+    }
+    if(this.checkPassword()) {
+      return false;
+    }
+    return true;
+  }
 
+  checkEmail() {
+    const { email } = this.usuario;
     if(email === '') {
       this.notify = getNotify(true, 'error', '', 'Correo requerido');
       return false;
     }
+    return true;
+  }
+
+  checkEmailFormato() {
+    const { email } = this.usuario;
     if(!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(email)) {
       this.notify = getNotify(true, 'error', '', 'Formato incorrecto en su direccion de correo electronico');
       return false;
     }
+    return true;
+  }
+
+  checkPassword() {
+    const { password } = this.usuario;
     if(password === '') {
       this.notify = getNotify(true, 'error', '', 'Contraseña requerido');
       return false;

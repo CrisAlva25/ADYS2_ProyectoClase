@@ -30,4 +30,12 @@ describe('RegisterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('email deberia estar vacio', () => {
+    expect(component.checkEmail()).toBeFalsy();
+  });
+
+  it('password deberia estar vacio', () => {
+    expect(component.checkEmail()).toBeFalsy();
+  });
 });
