@@ -2,7 +2,7 @@
     <div class="mx-auto"><!--col-md-3-->
         <div class="form rounded">
             <div class="card-body">
-                <h2 class="text-center"> 502PL Sign up</h2>
+                <h2 class="text-center"> 502PL Registro</h2>
                 <div class="or-seperator py-1"></div>
                 <div class="alert {{notify.type === 'success'? 'alert-success': 'alert-danger'}}" role="alert" *ngIf="notify.active">
                     {{notify.message}}
@@ -15,7 +15,7 @@
                                     <span class="fa fa-user"></span>
                                 </span>                    
                             </div>
-                            <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="usuario.email" required>
+                            <input type="email" class="form-control" name="email" placeholder="Correo" [(ngModel)]="usuario.email" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -25,22 +25,22 @@
                                     <i class="fa fa-lock"></i>
                                 </span>                    
                             </div>
-                            <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="usuario.password" required>
+                            <input type="password" class="form-control" name="password" placeholder="Contraseña" [(ngModel)]="usuario.password" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-success btn-block login-btn" (click)="onSignUp()">Sign up</button>
+                        <button type="button" class="btn btn-success btn-block login-btn" (click)="onRegister()">Registrar</button>
                     </div>
                 </form>
                 <div class="or-seperator"><i>or</i></div>
                 <div class="text-center social-btn">
-                    <button class="btn btn-facebook btn-block" (click)="onSignUpFacebook()"><i class="fa fa-facebook"></i> Sign up with <b>Facebook</b></button>
-                    <button class="btn btn-google btn-block" (click)="onSigUpGoogle()"><i class="fa fa-google"></i> Sign up with <b>Google</b></button>
+                    <button class="btn btn-facebook btn-block" (click)="onRegisterFacebook()"><i class="fa fa-facebook"></i> Registrar con <b>Facebook</b></button>
+                    <button class="btn btn-google btn-block" (click)="onRegisterGoogle()"><i class="fa fa-google"></i> Registrar con <b>Google</b></button>
                 </div>
             </div>
             <div class="text-muted hint-text">
-                Do you have an account? 
-                <a [routerLink]="['/signin']" class="text-success">Sign in!</a>
+                Tiene usted una cuenta? 
+                <a [routerLink]="['/signin']" class="text-success">Iniciar sesion!</a>
             </div>
         </div>
     </div>

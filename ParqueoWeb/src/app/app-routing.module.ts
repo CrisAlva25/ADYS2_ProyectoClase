@@ -11,8 +11,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'user-profile', component: PerfilUsuarioComponent },
-  { path: 'signup', component: SignUpComponent},
-  { path: 'signin', component: SignInComponent},
+  { path: 'register', component: SignUpComponent},
+  { path: 'login', component: SignInComponent},
   { path: 'chooserol', component: ChooseRolComponent},
   { path: 'admin', component: AdminComponent}
 ];

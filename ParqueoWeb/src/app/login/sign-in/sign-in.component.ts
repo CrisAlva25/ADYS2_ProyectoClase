@@ -34,6 +34,7 @@ export class SignInComponent implements OnInit {
       this.usuario.provider = 'facebook';
       this.signIn();
     } catch (error) {
+      console.log(error);
       this.notify = getNotify(true, 'error', '', error.message);
     }
   }
@@ -45,6 +46,7 @@ export class SignInComponent implements OnInit {
       this.usuario.provider = 'facebook';
       this.signIn();
     } catch (error) {
+      console.log(error);
       this.notify = getNotify(true, 'error', '', error.message);
     }
   }
@@ -91,6 +93,7 @@ export class SignInComponent implements OnInit {
         console.log('dashboard regular');
       }
     } catch (error) {
+      console.log(error);
       this.notify = getNotify(true, 'error', '',  (error.error)? error.error: error.message);
     }
   }
