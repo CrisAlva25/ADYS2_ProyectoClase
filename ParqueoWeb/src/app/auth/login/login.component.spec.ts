@@ -4,24 +4,25 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../../environments/environment';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FormsModule } from "@angular/forms";
 
-import { ChooseRolComponent } from './choose-rol.component';
+import { LoginComponent } from './login.component';
 
-describe('ChooseRolComponent', () => {
-  let component: ChooseRolComponent;
-  let fixture: ComponentFixture<ChooseRolComponent>;
+describe('LoginComponent', () => {
+  let component: LoginComponent;
+  let fixture: ComponentFixture<LoginComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [AngularFireAuth, AngularFireAuthModule],
-      imports: [HttpClientTestingModule, AngularFireModule.initializeApp(environment.firebaseConfig), RouterTestingModule.withRoutes([])],
-      declarations: [ ChooseRolComponent ]
+      imports: [FormsModule, HttpClientTestingModule, AngularFireModule.initializeApp(environment.firebaseConfig), RouterTestingModule.withRoutes([])],
+      declarations: [ LoginComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChooseRolComponent);
+    fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

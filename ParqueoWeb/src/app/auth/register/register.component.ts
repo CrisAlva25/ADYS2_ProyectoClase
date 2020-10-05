@@ -4,14 +4,14 @@ import { AuthService } from 'src/app/servicios/auth.service';
 import { RestService } from 'src/app/servicios/rest.service';
 import { Notify, getNotify } from "../../interface/Notify";
 
-const REQUEST_ADDRESS = 'sign-up';
+const REQUEST_ADDRESS = 'register';
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   public notify: Notify = {};
   public usuario =  {
     name: '',
@@ -43,54 +43,76 @@ export class SignUpComponent implements OnInit {
     };
   }
 
-  async onSignUpFacebook() {
+  async onRegisterFacebook() {
     try {
       const { user } = await this.auth.authWithFacebook();
       let usr = this.getUsuario(user.displayName, user.email, user.uid, user.phoneNumber, user.photoURL, 'facebook');
-      this.signUp(usr);
+      this.register(usr);
     } catch (error) {
       this.notify = getNotify(true, 'error', '', error.message);
     }
   }
 
-  async onSigUpGoogle() {
+  async onRegisterGoogle() {
     try {
       const { user } = await this.auth.authWithGoogle();
       let usr = this.getUsuario(user.displayName, user.email, user.uid, user.phoneNumber, user.photoURL, 'google');
-      this.signUp(usr);
+      this.register(usr);
     } catch (error) {
       this.notify = getNotify(true, 'error', '', error.message);
     }
   }
   
   checkFields(): boolean {
-    const { email, password } = this.usuario;
-
-    if(email === '') {
-      this.notify = getNotify(true, 'error', '', 'Email required');
+    if(this.checkEmail()) {
       return false;
     }
-    if(!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(email)) {
-      this.notify = getNotify(true, 'error', '', 'The email address is badly formatted');
+    if(this.checkEmailFormato()) {
       return false;
     }
-    if(password === '') {
-      this.notify = getNotify(true, 'error', '', 'Password required');
+    if(this.checkPassword()) {
       return false;
     }
     return true;
   }
 
-  async onSignUp() {
-    if(!this.checkFields()) return;
-    this.signUp(this.usuario);
+  checkEmail() {
+    const { email } = this.usuario;
+    if(email === '') {
+      this.notify = getNotify(true, 'error', '', 'Correo requerido');
+      return false;
+    }
+    return true;
   }
 
-  async signUp(user) {
+  checkEmailFormato() {
+    const { email } = this.usuario;
+    if(!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(email)) {
+      this.notify = getNotify(true, 'error', '', 'Formato incorrecto en su direccion de correo electronico');
+      return false;
+    }
+    return true;
+  }
+
+  checkPassword() {
+    const { password } = this.usuario;
+    if(password === '') {
+      this.notify = getNotify(true, 'error', '', 'Contraseña requerido');
+      return false;
+    }
+    return true;
+  }
+
+  async onRegister() {
+    if(!this.checkFields()) return;
+    this.register(this.usuario);
+  }
+
+  async register(user) {
     try {
       let usr = await this.rest.PostRequest(REQUEST_ADDRESS, user).toPromise();
       sessionStorage.setItem('user', JSON.stringify(usr));
-      sessionStorage.setItem('navegacion', 'signup');
+      sessionStorage.setItem('navegacion', 'register');
       
       this.router.navigate(['/chooserol']);
     } catch (error) {

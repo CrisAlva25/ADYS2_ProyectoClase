@@ -1,23 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormsModule } from "@angular/forms";
 
-import { DashboardComponent } from './dashboard.component';
+import { ChooseRolComponent } from './choose-rol.component';
 
-describe('DashboardComponent', () => {
-  let component: DashboardComponent;
-  let fixture: ComponentFixture<DashboardComponent>;
+describe('ChooseRolComponent', () => {
+  let component: ChooseRolComponent;
+  let fixture: ComponentFixture<ChooseRolComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule , HttpClientTestingModule],
-      declarations: [ DashboardComponent ]
+      imports: [FormsModule, HttpClientTestingModule, RouterTestingModule.withRoutes([])],
+      declarations: [ ChooseRolComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardComponent);
+    fixture = TestBed.createComponent(ChooseRolComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,80 @@
+<div class="wrapper">
+    <div class="container text-center">
+        <!--<main role="main" class="inner cover">
+            <h1 class="cover-heading my-3">Solicitudes</h1>
+            
+            <button data-toggle="modal" data-target="#detailsModal" hidden #openModal></button>
+            <div *ngFor="let lot of parkingLots; let i = index" class="card text-center text-dark bg-secondary my-4">
+                <div class="card-header text-white">
+                    {{lot.name}}
+                </div>
+                <div class="card-body bg-light">
+                    <p class="card-text">{{lot.message}}</p>
+                    <a class="btn btn-primary mx-2" (click)="seeDetails(i)">Detalles</a>
+                    <a class="btn btn-success" (click)="authorize(i)">Aceptar</a>
+                </div>
+            </div>
+            
+        </main>
+        -->
+        
+        <h1 class="cover-heading my-3">Solicitudes</h1>
+        <button data-toggle="modal" data-target="#detailsModal" hidden #openModal></button>
+        <div class="row">
+            <div *ngFor="let lot of parkingLots; let i = index" class="col-md-4">
+                <div class="card text-center text-dark bg-secondary my-4">
+                    <div class="card-header text-white">
+                        {{lot.name}}
+                        <span *ngIf='lot.authorized' class="mx-2 fa fa-check"></span>
+                    </div>
+
+                    <div class="card-body bg-light">
+                        <p class="card-text">{{lot.message}}</p>
+                        <a class="btn btn-primary mx-2" (click)="seeDetails(i)">Detalles</a>
+                        <a class="btn btn-success" (click)="authorize(i)">Aceptar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Modal with Profile Pic, DPI, and Police Records -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby= "exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-dark text-light">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Detalles</h5>
+                    <!--<button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>-->
+                </div>
+                <div class="modal-body text-center">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <h5>Foto de Perfil</h5>
+                                <img class="d-block w-100 h-75" src="{{currentLot.photo}}" alt="Foto de Perfil">
+                            </div>
+                            <div class="carousel-item w-100 h-100">
+                                <h5>DPI</h5>
+                                <img class="d-block w-100 h-75" src="{{currentLot.dpi}}" alt="Documento Personal de Identificacion">
+                            </div>
+                            <div class="carousel-item w-100 h-100">
+                                <h5>Antecedentes Policiacos</h5>
+                                <img class="d-block w-100 h-75" src="{{currentLot.records}}" alt="Antecedentes Policiados">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,121 @@
+<div class="wrapper text-center bg-dark">
+    <!--<div class="form-signin">
+      <button class="btn btn-lg btn-secondary" type="button">Foto de Perfil</button>
+      <button class="btn btn-lg btn-secondary" type="button">Certificad de Antecedentes Penales</button>
+      <button class="btn btn-lg btn-secondary" type="button">DPI</button>
+      <button class="btn btn-lg btn-secondary" type="button">Acuerdos Legales</button>
+      <p class="mt-2 mb-3 text-muted">&copy; 2020</p>
+    </div>-->
+    <div class="form-signin mx-4 my-5 rounded">
+        <h1 class="h3 mb-3 font-weight-normal text-light">Pasos a Seguir</h1>
+        <div class="alert {{notify.type === 'error'? 'alert-danger': 'alert-success'}}" role="alert" *ngIf="notify.active">{{notify.message}}</div>
+        <button class="btn btn-lg btn-secondary bot my-1" type="button" [disabled]="datos[0].loaded" data-toggle="modal"  data-target="#profilePicModal">Foto de Perfil</button>
+        <button class="btn btn-lg btn-secondary bot my-1" type="button" [disabled]="datos[1].loaded" data-toggle="modal"  data-target="#dpiModal">DPI</button>
+        <button class="btn btn-lg btn-secondary bot my-1" type="button" [disabled]="datos[2].loaded" data-toggle="modal"  data-target="#policeModal">Antecedentes Policiacos</button>
+        <button class="btn btn-lg btn-secondary bot my-1" type="button" [disabled]="acceptTerms" data-toggle="modal" data-target="#termsModal">Acuerdos Legales</button>
+        <!--<button class="btn btn-lg btn-secondary bot my-1" type="button" (click)="sendRequest()">Enviar Solicitud</button>-->
+    </div>
+
+    <!-- Subir foto de perfil -->
+    <div class="modal fade" id="profilePicModal" tabindex="-1" role="dialog" aria-labelledby="profilePicTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="profilePicTitle">Foto de Perfil</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #profileClose>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group row">
+              <label for="profileP" class="form-control custom-file-label">Cargar</label>
+              <input #profilePhoto type="file" accept="image/*" class="custom-file-input" id="profileP" (change)="showPreview($event, 1)">
+              <img *ngIf="datos[0].src" [src]="datos[0].src" alt="Vista Previa" class="img-thumbnail">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="uploadPhoto(1)">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subir dpi -->
+    <div class="modal fade" id="dpiModal" tabindex="-1" role="dialog" aria-labelledby="dpiTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="dpiTitle">Document Personal de Identificación</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #dpiClose>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group row">
+              <label for="dpiPhoto" class="custom-file-label">Cargar</label>
+              <input #dpiPhoto type="file" accept="image/*" class="custom-file-input" id="dpiPhoto" (change)="showPreview($event, 2)">
+              <img *ngIf="datos[1].src" [src]="datos[1].src" alt="Vista Previa" class="img-thumbnail">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="uploadPhoto(2)">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subir antecedentes policiacos -->
+    <div class="modal fade" id="policeModal" tabindex="-1" role="dialog" aria-labelledby="policeTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="policeTitle">Antecedentes Policiacos</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #policeClose>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group row">
+              <label for="policePhoto" class="custom-file-label">Cargar</label>
+              <input #policePhoto type="file" accept="image/*" class="custom-file-input" id="policePhoto" (change)="showPreview($event, 3)">
+              <img *ngIf="datos[2].src" [src]="datos[2].src" alt="Vista Previa" class="img-thumbnail">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="uploadPhoto(3)">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aceptar Terminos y Condiciones -->
+    <div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="termsTitle">Términos y Condiciones</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #termsClose>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>502 Parking Lot es una app que tiene el objetivo de facilitar el encontrar parqueos que proporcionen comodidad, seguridad y buenos precios a clientes por toda Guatemala. Al aceptar estos términos y condiciones usted se compromete a proporciona un buen servicio a los clientes. De no cumplir con estas condiciones 502PL puede darse la libertad de retirar su información de la aplicación. Si está de acuerdo con estos términos y condiciones llene el cuadro y presione guardar</p>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="isChecked" value="" id="TnC">
+              <label class="form-check-label" for="TnC">
+                Estoy de Acuerdo
+              </label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="agreeToTermsAndConditions()">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>

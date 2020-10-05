@@ -8,24 +8,28 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PerfilUsuarioComponent } from './perfil-usuario/perfil-usuario.component';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './admin/admin/admin.component';
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFireModule } from "@angular/fire";
 import { environment } from 'src/environments/environment';
-import { SignInComponent } from './login/sign-in/sign-in.component';
-import { SignUpComponent } from './login/sign-up/sign-up.component';
-import { ChooseRolComponent } from './login/choose-rol/choose-rol.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { ChooseRolComponent } from './auth/choose-rol/choose-rol.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FollowUpComponent } from './auth/follow-up/follow-up.component';
+import { RequestManagementComponent } from './admin/request-management/request-management.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PerfilUsuarioComponent,
     AdminComponent,
-    SignInComponent,
-    SignUpComponent,
+    LoginComponent,
+    RegisterComponent,
     ChooseRolComponent,
-    DashboardComponent
+    DashboardComponent,
+    FollowUpComponent,
+    RequestManagementComponent
   ],
   imports: [
     BrowserModule,
