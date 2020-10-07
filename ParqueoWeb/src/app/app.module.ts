@@ -18,6 +18,7 @@ import { ChooseRolComponent } from './auth/choose-rol/choose-rol.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FollowUpComponent } from './auth/follow-up/follow-up.component';
 import { RequestManagementComponent } from './admin/request-management/request-management.component';
+import { BloqueosComponent } from './admin/bloqueos/bloqueos.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RequestManagementComponent } from './admin/request-management/request-m
     ChooseRolComponent,
     DashboardComponent,
     FollowUpComponent,
-    RequestManagementComponent
+    RequestManagementComponent,
+    BloqueosComponent
   ],
   imports: [
     BrowserModule,
