@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 const REQUEST_FOTO = 'update-photo';
 const REQUEST_DPI = 'update-dpi';
 const REQUEST_ANTECEDENTES = 'update-criminalRecords';
+const REQUEST_TERMINOS = 'update-acceptTerm';
 const REQUEST_PARK = 'get-parking';
 
 @Component({
@@ -48,8 +49,10 @@ export class FollowUpComponent implements OnInit {
     try {
       let park = await this.rest.PostRequest(REQUEST_PARK, this.user).toPromise();
       this.acceptTerms = park.acceptTerm;
+      //console.log(this.user);
+      //console.log(park);
 
-      if (this.user.photo != null && this.user.photo != '')
+      if (park.photo != null && park.photo != '')
         this.datos[0].loaded = true;
 
       if (park.dpi != null && park.dpi != '')
@@ -93,6 +96,7 @@ export class FollowUpComponent implements OnInit {
       this.notify = getNotify(true, 'success', '', 'Gracias por actualizar su informacion');
       ref.getDownloadURL().subscribe(url => {
         this.rest.PostRequest(this.datos[option-1].request, { id: (option != 1)? this.user.idParking: this.user.id, url: url}).toPromise();
+        this.datos[option-1].loaded = true;
       });
     });
 
@@ -116,6 +120,15 @@ export class FollowUpComponent implements OnInit {
       this.closeModal(this.termsClose);
       return;
     }
+
+    try {
+      this.rest.PostRequest(REQUEST_TERMINOS, { id: this.user.idParking, termino: this.isChecked}).toPromise();
+      this.acceptTerms = true;
+      this.notify = getNotify(true, 'success', '', 'Gracias por aceptar los terminos y condiciones');
+    } catch (error) {
+      
+    }
+    
     this.closeModal(this.termsClose);
   }
 
