@@ -68,7 +68,7 @@ export class RequestManagementComponent implements OnInit {
 
   async authorize(i: number) {
     this.currentLot = this.parkingLots[i];
-    console.log(this.currentLot);
+    //console.log(this.currentLot);
 
     try {
       await this.rest.PostRequest(REQUEST_ACCEPTED, {id: this.currentLot.idParking, authorized: true}).toPromise();

@@ -75,6 +75,8 @@ export class FollowUpComponent implements OnInit {
 
   async uploadPhoto(option: number) {
     this.clearNotify();
+    if(option < 1) return;
+    
     // definiendo datos
     let path = `${this.datos[option-1].type}/${this.user.id}_${new Date().getTime()}`;
     let file = this.datos[option-1].selected;

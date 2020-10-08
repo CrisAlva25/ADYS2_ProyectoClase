@@ -43,11 +43,11 @@ describe('ChooseRolComponent', () => {
     expect(component.rol).toEqual('regular');
   });
 
-  it('deberia iniciar sesion', () => {
+  /*it('deberia iniciar sesion', () => {
     component.onConfirm();
     component.user = usr;
     component.rol = "regular";
     component.onConfirm();
     expect(component.user).toBeDefined();
-  });
+  });*/
 });
