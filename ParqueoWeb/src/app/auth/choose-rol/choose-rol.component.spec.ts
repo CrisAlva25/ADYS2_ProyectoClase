@@ -8,6 +8,7 @@ import { ChooseRolComponent } from './choose-rol.component';
 describe('ChooseRolComponent', () => {
   let component: ChooseRolComponent;
   let fixture: ComponentFixture<ChooseRolComponent>;
+  let usr: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,10 +21,33 @@ describe('ChooseRolComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ChooseRolComponent);
     component = fixture.componentInstance;
+    usr = {id: "5f7e4daf05745d242056eebf", email: 'test2@test.com'};
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    sessionStorage.clear();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('deberia cambiar rol owner', () => {
+    component.onOwner();
+    expect(component.rol).toEqual('owner');
+  });
+
+  it('deberia cambiar rol regular', () => {
+    component.onRegular();
+    expect(component.rol).toEqual('regular');
+  });
+
+  /*it('deberia iniciar sesion', () => {
+    component.onConfirm();
+    component.user = usr;
+    component.rol = "regular";
+    component.onConfirm();
+    expect(component.user).toBeDefined();
+  });*/
 });

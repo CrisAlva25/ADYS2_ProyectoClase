@@ -22,6 +22,8 @@ export class DashboardComponent implements OnInit {
     tariff: '',
     numberAvailable: 100,
     numberCapacity: 100,
+    block: false,
+    authorized: true,
     photos: [ 'https://cdn.ticbeat.com/src/uploads/2018/02/vender-fotos-por-internet-810x540.jpeg', 'https://cdn.ticbeat.com/src/uploads/2018/02/vender-fotos-por-internet-810x540.jpeg']
   };
 
@@ -44,6 +46,7 @@ export class DashboardComponent implements OnInit {
   async getParqueos() {
     try {
       this.parqueos = await this.rest.GetRequest(REQUEST_ADDRESS).toPromise();
+      this.parqueos = this.parqueos.filter(parqueo => !parqueo.block && parqueo.authorized);
     } catch (error) { }
   }
 

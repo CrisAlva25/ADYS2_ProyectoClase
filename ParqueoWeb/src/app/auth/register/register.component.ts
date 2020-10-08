@@ -44,6 +44,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async onRegisterFacebook() {
+    this.clearNotify();
     try {
       const { user } = await this.auth.authWithFacebook();
       let usr = this.getUsuario(user.displayName, user.email, user.uid, user.phoneNumber, user.photoURL, 'facebook');
@@ -54,6 +55,7 @@ export class RegisterComponent implements OnInit {
   }
 
   async onRegisterGoogle() {
+    this.clearNotify();
     try {
       const { user } = await this.auth.authWithGoogle();
       let usr = this.getUsuario(user.displayName, user.email, user.uid, user.phoneNumber, user.photoURL, 'google');
@@ -64,13 +66,13 @@ export class RegisterComponent implements OnInit {
   }
   
   checkFields(): boolean {
-    if(this.checkEmail()) {
+    if(!this.checkEmail()) {
       return false;
     }
-    if(this.checkEmailFormato()) {
+    if(!this.checkEmailFormato()) {
       return false;
     }
-    if(this.checkPassword()) {
+    if(!this.checkPassword()) {
       return false;
     }
     return true;
@@ -104,7 +106,9 @@ export class RegisterComponent implements OnInit {
   }
 
   async onRegister() {
-    if(!this.checkFields()) return;
+    this.clearNotify();
+    if(!this.checkFields())
+      return;
     this.register(this.usuario);
   }
 
@@ -118,5 +122,9 @@ export class RegisterComponent implements OnInit {
     } catch (error) {
       this.notify = getNotify(true, 'error', '', (error.error)? error.error: error.message);
     }
+  }
+
+  clearNotify() {
+    this.notify.active = false;
   }
 }

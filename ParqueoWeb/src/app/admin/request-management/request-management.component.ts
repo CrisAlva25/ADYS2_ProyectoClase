@@ -38,7 +38,7 @@ export class RequestManagementComponent implements OnInit {
     reports: ''
   };
 
-  public parkingLots = [];
+  public parkingLots = [this.currentLot];
 
   constructor(public router: Router,
               public rest: RestService)
@@ -62,13 +62,13 @@ export class RequestManagementComponent implements OnInit {
     this.currentLot = this.parkingLots[i];
     console.log(this.currentLot.photo);
     console.log(this.currentLot.dpi);
-    console.log(this.currentLot.records)
+    console.log(this.currentLot.criminalRecords)
     this.openModal.nativeElement.click();
   }
 
   async authorize(i: number) {
     this.currentLot = this.parkingLots[i];
-    console.log(this.currentLot);
+    //console.log(this.currentLot);
 
     try {
       await this.rest.PostRequest(REQUEST_ACCEPTED, {id: this.currentLot.idParking, authorized: true}).toPromise();

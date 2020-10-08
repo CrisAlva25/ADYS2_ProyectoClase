@@ -2,7 +2,7 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RestService } from './servicios/rest.service';
-import { AuthService } from "./servicios/auth.service";;
+import { AuthService } from "./servicios/auth.service";
 import { FormsModule } from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
