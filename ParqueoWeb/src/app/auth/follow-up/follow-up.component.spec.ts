@@ -10,7 +10,7 @@ import { FollowUpComponent } from './follow-up.component';
 describe('FollowUpComponent', () => {
   let component: FollowUpComponent;
   let fixture: ComponentFixture<FollowUpComponent>;
-  let usr: any;
+  //let usr: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -23,7 +23,7 @@ describe('FollowUpComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FollowUpComponent);
     component = fixture.componentInstance;
-    usr = { idParking: '5f7e4da305745d242056eebe', photo: null };
+    //usr = { idParking: '5f7e4da305745d242056eebe', photo: null };
     fixture.detectChanges();
   });
 

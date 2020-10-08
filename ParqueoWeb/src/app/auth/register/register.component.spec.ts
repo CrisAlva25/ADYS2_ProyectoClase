@@ -37,18 +37,6 @@ describe('RegisterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deberia crear notify default', () => {
-    expect(component.notify).toBeDefined();
-  });
-
-  it('deberia estar desactivado notify', () => {
-    expect(component.notify.active).toBeFalsy();
-  });
-
-  it('deberia crear usuario default', () => {
-    expect(component.usuario).toBeDefined();
-  });
-
   it('deberia crear objeto usuario', () => {
     let usr_tmp = component.getUsuario('', '', '', '', '', '');
     expect(usr_tmp).toBeDefined();
@@ -80,18 +68,12 @@ describe('RegisterComponent', () => {
     expect(component.checkFields()).toBeTruthy();
   });
 
-  it('deberia revisar onRegister', () => {
+  /*it('deberia revisar onRegister', () => {
     component.onRegister();
     expect(component.notify.active).toBeTruthy();
     component.usuario.email = usr.email;
     component.usuario.password = usr.password;
     component.onRegister();
     expect(component.notify.active).toBeTruthy();
-  });
-
-  /*it('deberia encontrar error existe user', () => {
-    component.usuario.email = usr.email;
-    component.usuario.password = usr.password;
-    component.register(component.usuario);
   });*/
 });

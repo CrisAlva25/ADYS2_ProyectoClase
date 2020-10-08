@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { RestService } from 'src/app/servicios/rest.service';
 import { getNotify, Notify } from "../../interface/Notify";
 import { AngularFireStorage } from "@angular/fire/storage";
-import { finalize } from "rxjs/operators";
+import { Observable } from 'rxjs';
 
 const REQUEST_FOTO = 'update-photo';
 const REQUEST_DPI = 'update-dpi';
@@ -18,6 +18,7 @@ const REQUEST_PARK = 'get-parking';
 export class FollowUpComponent implements OnInit {
   public notify: Notify = {};
   public user: any;
+  public uploadPercentage: Observable<number>;
 
   public datos = [
     {selected: null, src: '', url: null, loaded: false, type: 'foto', request: REQUEST_FOTO}, //perfil
@@ -62,64 +63,62 @@ export class FollowUpComponent implements OnInit {
   }
 
   showPreview(event: any, option: number) {
-    if(event != null) {
-      if (event.target.files && event.target.files[0]) {
-        const reader = new FileReader();
-  
-        reader.onload = (e: any) => this.datos[option-1].src = e.target.result;
-        reader.readAsDataURL(event.target.files[0]);
-        this.datos[option-1].selected = event.target.files[0];
-      }
+    if (event == null) return;
+    
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => this.datos[option-1].src = e.target.result;
+      reader.readAsDataURL(event.target.files[0]);
+      this.datos[option-1].selected = event.target.files[0];
     }
   }
 
-  uploadPhoto(option: number): void {
-    if (option < 1) return;
-    const user = JSON.parse(sessionStorage.getItem('user'));
-    
-    let imgToSend = null;
-    let resource;
+  async uploadPhoto(option: number) {
+    this.clearNotify();
+    // definiendo datos
+    let path = `${this.datos[option-1].type}/${this.user.id}_${new Date().getTime()}`;
+    let file = this.datos[option-1].selected;
 
-    if (this.datos[option-1].selected == null) {
-      this.notify = getNotify(true, 'error', '', 'Debe seleccionar una fotografia para poder enviarla');
-      //console.log(this.datos[option-1].selected);
-      return;
+    // ref upload
+    const ref = this.storage.ref(path);
+    const task= ref.put(file);
+    this.uploadPercentage = task.percentageChanges();
+
+    // process upload
+    task.then(() => {
+      // finish upload
+      this.uploadPercentage = null;
+      this.notify = getNotify(true, 'success', '', 'Gracias por actualizar su informacion');
+      ref.getDownloadURL().subscribe(url => {
+        this.rest.PostRequest(this.datos[option-1].request, { id: (option != 1)? this.user.idParking: this.user.id, url: url}).toPromise();
+      });
+    });
+
+    this.closeOptionModal(option);
+  }
+
+  private closeOptionModal(option: number) {
+    if(option == 1) {
+      this.closeModal(this.profileClose);
+    } else if (option == 2) {
+      this.closeModal(this.dpiClose);
+    } else {
+      this.closeModal(this.policeClose);
     }
-
-    imgToSend = this.datos[option-1].selected.name.split('.').slice(0, -1).join('.');
-    resource = this.datos[option-1].selected;
-
-    let filePath = `${ this.datos[option-1].type}/${user.id}_${imgToSend}_${new Date().getTime()}`;
-    console.log(filePath);
-    const fileRef = this.storage.ref(filePath);
-    this.storage.upload(filePath, resource).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe((url) => {
-          let observer = this.rest.PostRequest(this.datos[option-1].request, { id: (option != 1)? user.idParking: user.id, url: url}).subscribe(res => {
-            this.notify = getNotify(true, 'success', '', 'Gracias por actualizar su informacion');
-            /*setTimeout(() => {
-              this.notify.active = false;
-            }, 4000);*/
-            observer.unsubscribe();
-          });
-        })
-      })
-    ).subscribe();
-    this.datos[option-1].loaded = true;
-    this.closeModal(this.profileClose);
   }
 
   agreeToTermsAndConditions() {
+    this.clearNotify();
     if (!this.isChecked) {
       this.notify = getNotify(true, 'error', '', 'Debe llenar el cuadro para aceptar las condiciones');
       this.closeModal(this.termsClose);
-      /*setTimeout(() => {
-        this.notify.active = false;
-      }, 3500);*/
       return;
     }
-
     this.closeModal(this.termsClose);
+  }
+
+  clearNotify() {
+    this.notify.active = false;
   }
 
   private closeModal(modal: ElementRef):void {

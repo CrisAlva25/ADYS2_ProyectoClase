@@ -33,14 +33,6 @@ describe('ChooseRolComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deberia crear notify default', () => {
-    expect(component.notify).toBeDefined();
-  });
-
-  it('deberia estar desactivado notify', () => {
-    expect(component.notify.active).toBeFalsy();
-  });
-
   it('deberia cambiar rol owner', () => {
     component.onOwner();
     expect(component.rol).toEqual('owner');

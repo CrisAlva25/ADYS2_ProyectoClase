@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   async onLoginFacebook() {
+    this.clearNotify();
     try {
       const { password } = this.usuario;
       const { user } = await this.auth.authWithFacebook();
@@ -49,6 +50,7 @@ export class LoginComponent implements OnInit {
   }
 
   async onLoginGoogle() {
+    this.clearNotify();
     try {
       const { password } = this.usuario;
       const { user } = await this.auth.authWithGoogle();
@@ -101,7 +103,9 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginEmail() {
-    if (!this.checkFields()) return;
+    this.clearNotify();
+    if (!this.checkFields())
+      return;
     this.usuario.provider = 'email';
     this.login();
   }
@@ -133,5 +137,9 @@ export class LoginComponent implements OnInit {
       console.log(error);
       this.notify = getNotify(true, 'error', '',  (error.error)? error.error: error.message);
     }
+  }
+
+  clearNotify() {
+    this.notify.active = false;
   }
 }

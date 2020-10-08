@@ -37,18 +37,6 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('deberia crear notify default', () => {
-    expect(component.notify).toBeDefined();
-  });
-
-  it('deberia estar desactivado notify', () => {
-    expect(component.notify.active).toBeFalsy();
-  });
-
-  it('deberia crear usuario default', () => {
-    expect(component.usuario).toBeDefined();
-  });
-
   it('deberia crear objeto usuario', () => {
     let usr_tmp = component.getUsuario('', '', '');
     expect(usr_tmp).toBeDefined();
@@ -80,7 +68,7 @@ describe('LoginComponent', () => {
     expect(component.checkFields()).toBeTruthy();
   });
 
-  it('deberia revisar onLoginEmail', () => {
+  /*it('deberia revisar onLoginEmail', () => {
     component.onLoginEmail();
     expect(component.notify.active).toBeTruthy();
     component.usuario.email = usr.email;
@@ -89,5 +77,5 @@ describe('LoginComponent', () => {
     component.notify.active = false;
     component.onLoginEmail();
     expect(component.notify.active).toBeFalsy();
-  });
+  });*/
 });
