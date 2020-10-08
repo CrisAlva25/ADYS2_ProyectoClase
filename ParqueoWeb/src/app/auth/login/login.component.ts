@@ -28,11 +28,19 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getUsuario(email, password, provider) {
+    return {
+      email: email,
+      password: password,
+      provider: provider
+    };
+  }
+
   async onLoginFacebook() {
     try {
+      const { password } = this.usuario;
       const { user } = await this.auth.authWithFacebook();
-      this.usuario.email = user.email;
-      this.usuario.provider = 'facebook';
+      this.usuario = this.getUsuario(user.email, password, 'facebook');
       this.login();
     } catch (error) {
       console.log(error);
@@ -42,9 +50,9 @@ export class LoginComponent implements OnInit {
 
   async onLoginGoogle() {
     try {
+      const { password } = this.usuario;
       const { user } = await this.auth.authWithGoogle();
-      this.usuario.email = user.email;
-      this.usuario.provider = 'facebook';
+      this.usuario = this.getUsuario(user.email, password, 'google');
       this.login();
     } catch (error) {
       console.log(error);
@@ -53,16 +61,38 @@ export class LoginComponent implements OnInit {
   }
 
   checkFields(): boolean {
-    const { email, password } = this.usuario;
+    if(!this.checkEmail) {
+      return false;
+    }
+    if(!this.checkEmailFormato()) {
+      return false;
+    }
+    if(!this.checkPassword()) {
+      return false;
+    }
+    return true;
+  }
 
+  checkEmail() {
+    const { email } = this.usuario;
     if(email === '') {
       this.notify = getNotify(true, 'error', '', 'Correo requerido');
       return false;
     }
+    return true;
+  }
+
+  checkEmailFormato() {
+    const { email } = this.usuario;
     if(!/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(email)) {
       this.notify = getNotify(true, 'error', '', 'Formato incorrecto en su direccion de correo electronico');
       return false;
     }
+    return true;
+  }
+
+  checkPassword() {
+    const { password } = this.usuario;
     if(password === '') {
       this.notify = getNotify(true, 'error', '', 'Contraseña requerido');
       return false;

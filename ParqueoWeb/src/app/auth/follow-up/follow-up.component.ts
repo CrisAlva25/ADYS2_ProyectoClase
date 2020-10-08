@@ -58,21 +58,23 @@ export class FollowUpComponent implements OnInit {
         this.datos[2].loaded = true;
 
     } catch (error) {
-      
     }
   }
 
   showPreview(event: any, option: number) {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-
-      reader.onload = (e: any) => this.datos[option-1].src = e.target.result;
-      reader.readAsDataURL(event.target.files[0]);
-      this.datos[option-1].selected = event.target.files[0];
+    if(event != null) {
+      if (event.target.files && event.target.files[0]) {
+        const reader = new FileReader();
+  
+        reader.onload = (e: any) => this.datos[option-1].src = e.target.result;
+        reader.readAsDataURL(event.target.files[0]);
+        this.datos[option-1].selected = event.target.files[0];
+      }
     }
   }
 
   uploadPhoto(option: number): void {
+    if (option < 1) return;
     const user = JSON.parse(sessionStorage.getItem('user'));
     
     let imgToSend = null;
@@ -95,9 +97,9 @@ export class FollowUpComponent implements OnInit {
         fileRef.getDownloadURL().subscribe((url) => {
           let observer = this.rest.PostRequest(this.datos[option-1].request, { id: (option != 1)? user.idParking: user.id, url: url}).subscribe(res => {
             this.notify = getNotify(true, 'success', '', 'Gracias por actualizar su informacion');
-            setTimeout(() => {
+            /*setTimeout(() => {
               this.notify.active = false;
-            }, 4000);
+            }, 4000);*/
             observer.unsubscribe();
           });
         })
@@ -111,9 +113,9 @@ export class FollowUpComponent implements OnInit {
     if (!this.isChecked) {
       this.notify = getNotify(true, 'error', '', 'Debe llenar el cuadro para aceptar las condiciones');
       this.closeModal(this.termsClose);
-      setTimeout(() => {
+      /*setTimeout(() => {
         this.notify.active = false;
-      }, 3500);
+      }, 3500);*/
       return;
     }
 
@@ -123,5 +125,4 @@ export class FollowUpComponent implements OnInit {
   private closeModal(modal: ElementRef):void {
     modal.nativeElement.click();
   }
-
 }

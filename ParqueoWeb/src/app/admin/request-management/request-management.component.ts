@@ -38,7 +38,7 @@ export class RequestManagementComponent implements OnInit {
     reports: ''
   };
 
-  public parkingLots = [];
+  public parkingLots = [this.currentLot];
 
   constructor(public router: Router,
               public rest: RestService)
@@ -62,7 +62,7 @@ export class RequestManagementComponent implements OnInit {
     this.currentLot = this.parkingLots[i];
     console.log(this.currentLot.photo);
     console.log(this.currentLot.dpi);
-    console.log(this.currentLot.records)
+    console.log(this.currentLot.criminalRecords)
     this.openModal.nativeElement.click();
   }
 

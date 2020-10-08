@@ -64,13 +64,13 @@ export class RegisterComponent implements OnInit {
   }
   
   checkFields(): boolean {
-    if(this.checkEmail()) {
+    if(!this.checkEmail()) {
       return false;
     }
-    if(this.checkEmailFormato()) {
+    if(!this.checkEmailFormato()) {
       return false;
     }
-    if(this.checkPassword()) {
+    if(!this.checkPassword()) {
       return false;
     }
     return true;

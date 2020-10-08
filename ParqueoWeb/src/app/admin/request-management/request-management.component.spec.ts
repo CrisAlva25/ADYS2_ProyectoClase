@@ -26,4 +26,10 @@ describe('RequestManagementComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('deberia haber parqueo', () => {
+    component.seeDetails(0);
+    component.authorize(0);
+    expect(component.parkingLots.length).toBeGreaterThan(0)
+  })
 });
