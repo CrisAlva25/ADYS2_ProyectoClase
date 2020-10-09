@@ -9,6 +9,7 @@ import { ChooseRolComponent } from './auth/choose-rol/choose-rol.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FollowUpComponent } from './auth/follow-up/follow-up.component';
 import { RequestManagementComponent } from './admin/request-management/request-management.component';
+import { PantallaBienvenidaComponent } from './pantalla-bienvenida/pantalla-bienvenida.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'requestManagement', component: RequestManagementComponent},
   { path: 'user-profile', component: PerfilUsuarioComponent },
   { path: 'admin', component: AdminComponent},
+  { path: 'admin', component: AdminComponent},
+  { path: 'welcome', component: PantallaBienvenidaComponent}
 ];
 
 @NgModule({
