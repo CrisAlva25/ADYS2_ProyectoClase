@@ -18,6 +18,8 @@ import { ChooseRolComponent } from './auth/choose-rol/choose-rol.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FollowUpComponent } from './auth/follow-up/follow-up.component';
 import { RequestManagementComponent } from './admin/request-management/request-management.component';
+import { FeedComponent } from './feed/feed.component';
+import { NotifierModule } from "angular-notifier";
 
 @NgModule({
   declarations: [
@@ -29,17 +31,19 @@ import { RequestManagementComponent } from './admin/request-management/request-m
     ChooseRolComponent,
     DashboardComponent,
     FollowUpComponent,
-    RequestManagementComponent
+    RequestManagementComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NotifierModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
   ],
-  providers: [RestService, Title, AuthService],
+  providers: [RestService,NotifierModule, Title, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
