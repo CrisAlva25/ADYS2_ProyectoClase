@@ -14,7 +14,7 @@ export class FeedComponent implements OnInit {
   currentNew = { address: 'Lote 10',
                  username: "Brandon",
                  user: "",
-                 photos: ["../assets/img1.jpg", "../assets/img2.jpg"],
+                 photos: [/*"../assets/img1.jpg", "../assets/img2.jpg"*/],
                  text: "El texto que el usuario quiera incluir",
                  parkingLot: "",
                  _id: ""
@@ -27,7 +27,7 @@ export class FeedComponent implements OnInit {
   //esta variable sirve para controlar el modal
   @ViewChild('infoClose', { static: false }) infoClose: ElementRef;
 
-  constructor(private rest: RestService, notifierService: NotifierService) 
+  constructor(private rest: RestService, notifierService: NotifierService)
   {
     this.notifier = notifierService;
     this.getListNotices();
@@ -58,8 +58,8 @@ export class FeedComponent implements OnInit {
 
   changeCurrentNew(noticia){
     console.log('en el metodo changeCurrentNew');
-console.log(noticia);
-alert(noticia._id);
+    console.log(noticia);
+    alert(noticia._id);
     this.currentNew._id = noticia._id;
     this.currentNew.address = "";
     this.currentNew.parkingLot = "";

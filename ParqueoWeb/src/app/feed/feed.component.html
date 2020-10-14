@@ -36,25 +36,25 @@
           </div>
         </nav>
       </div>
-        
+
            <!-- Aqui empieza el album -->
-    
+
            <main>
             <section class="jumbotron text-center my-5">
               <div class="container">
                 <h1 class="jumbotron-heading">Noticias</h1>
               </div>
             </section>
-    
+
             <div class="album py-5 bg-light">
               <div class="container">
                 <div class="row">
-                  
+
                   <div *ngFor="let noticia of noticias" class="col-md-4">
                     <div class="card mb-4 box-shadow">
-                      <img class="card-img-top" data-src="{{noticia.notice.photos[0]}}" alt="Card image cap">
+                      <img class="card-img-top" data-src="{{noticia.photos[0]}}" alt="Card image cap">
                       <div class="card-body">
-                        <p class="card-text">{{noticia.notice.text}}</p>
+                        <p class="card-text">{{noticia.text}}</p>
                         <div class="d-flex justify-content-between align-items-center">
                           <div class="btn-group">
                             <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" (click)="changeCurrentNew(noticia)" data-target="#infoModal">Detalles</button>
@@ -63,13 +63,13 @@
                       </div>
                     </div>
                   </div>
-    
+
                 </div>
               </div>
             </div>
         </main>
-    
-    
+
+
         <!-- Modal de Noticia -->
         <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="profilePicTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -114,10 +114,9 @@
               </div>
             </div>
           </div>
-          <!-- Modal de Noticias 
+          <!-- Modal de Noticias
         <notifier-container></notifier-container>
     -->
-    
+
     </div>
-    
-    
+
