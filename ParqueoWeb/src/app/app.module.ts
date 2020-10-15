@@ -20,6 +20,7 @@ import { FollowUpComponent } from './auth/follow-up/follow-up.component';
 import { RequestManagementComponent } from './admin/request-management/request-management.component';
 import { FeedComponent } from './feed/feed.component';
 import { NotifierModule } from "angular-notifier";
+import { ReportUserComponent } from './report-user/report-user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NotifierModule } from "angular-notifier";
     DashboardComponent,
     FollowUpComponent,
     RequestManagementComponent,
-    FeedComponent
+    FeedComponent,
+    ReportUserComponent
   ],
   imports: [
     BrowserModule,

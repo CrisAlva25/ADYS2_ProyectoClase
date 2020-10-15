@@ -11,7 +11,7 @@ import { FollowUpComponent } from './auth/follow-up/follow-up.component';
 import { RequestManagementComponent } from './admin/request-management/request-management.component';
 import { PantallaBienvenidaComponent } from './pantalla-bienvenida/pantalla-bienvenida.component';
 import { FeedComponent } from './feed/feed.component';
-
+import { ReportUserComponent } from './report-user/report-user.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -24,7 +24,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'welcome', component: PantallaBienvenidaComponent},
-  { path: 'noticias', component: FeedComponent}
+  { path: 'noticias', component: FeedComponent},
+  { path: 'reportUsers', component: ReportUserComponent}
 ];
 
 @NgModule({
