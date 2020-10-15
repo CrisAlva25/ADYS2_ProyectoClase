@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RestService } from '../servicios/rest.service';
-
+import { NotifierService } from 'angular-notifier';
+import { AngularFireStorage } from '@angular/fire/storage';
 const REQUEST_ADDRESS = 'all-parking';
 
 @Component({
@@ -9,9 +10,9 @@ const REQUEST_ADDRESS = 'all-parking';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  private readonly notifier: NotifierService;
   currentLot = {
-    idUser: 'lasdkfnasd',
+    id: 'lasdkfnasd',
     idParking: 'asa',
     photo: 'https://cdn.ticbeat.com/src/uploads/2018/02/vender-fotos-por-internet-810x540.jpeg',
     name: '',
@@ -36,11 +37,25 @@ export class DashboardComponent implements OnInit {
   @ViewChild('infoClose', { static: false }) infoClose: ElementRef;
   @ViewChild('newsClose', { static: false }) newsClose: ElementRef;
 
-  constructor(public rest: RestService)
-  { }
+  constructor(notifierService: NotifierService,
+    private rest: RestService,
+    private storage: AngularFireStorage) {
+    let observer = this.rest.GetRequest(REQUEST_ADDRESS).subscribe( res => {
+      res.forEach(user => {
+        if (user.block === false) {
+          this.parqueos.push(user);
+        }
+        //console.log(user);
+      });
+      console.log(sessionStorage.getItem('user'));
+      //console.log(this.parqueos);
+    });
+
+    this.notifier = notifierService;
+  }
 
   ngOnInit(): void {
-    this.getParqueos();
+    //this.getParqueos();
   }
 
   async getParqueos() {
@@ -72,4 +87,28 @@ export class DashboardComponent implements OnInit {
   changeCurrentLot(parqueo) {
     this.currentLot = parqueo;
   }
+  reportParking(): void {
+    console.log(this.currentLot);
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    const json = {
+      idRegular: user.id,
+      //emailRegular: user.em,
+      idParking: this.currentLot.id
+    }
+    console.log('id de  parq '+ this.currentLot.idParking);
+    console.log('id de _id '+ this.currentLot.id);
+    console.log(json);
+    let observer = this.rest.PostRequest('post-reportParking',json).subscribe( res => {
+      console.log(res);
+      if(res.success===false){
+        alert('error: '+ 'usted ya reporto este parqueo');
+      }else{
+        alert('success: '+'parqueo reportado');
+      }
+      //console.log(sessionStorage.getItem('user'));
+      //console.log(this.parqueos);
+    });
+
+  }
+
 }
