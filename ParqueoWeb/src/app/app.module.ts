@@ -21,6 +21,7 @@ import { RequestManagementComponent } from './admin/request-management/request-m
 import { FeedComponent } from './feed/feed.component';
 import { NotifierModule } from "angular-notifier";
 import { ReportUserComponent } from './report-user/report-user.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ReportUserComponent } from './report-user/report-user.component';
     FollowUpComponent,
     RequestManagementComponent,
     FeedComponent,
-    ReportUserComponent
+    ReportUserComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

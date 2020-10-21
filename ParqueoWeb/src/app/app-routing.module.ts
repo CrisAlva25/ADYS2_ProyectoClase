@@ -22,8 +22,7 @@ const routes: Routes = [
   { path: 'requestManagement', component: RequestManagementComponent},
   { path: 'user-profile', component: PerfilUsuarioComponent },
   { path: 'admin', component: AdminComponent},
-  { path: 'admin', component: AdminComponent},
-  { path: 'welcome', component: PantallaBienvenidaComponent},
+  { path: '', component: PantallaBienvenidaComponent},
   { path: 'noticias', component: FeedComponent},
   { path: 'reportUsers', component: ReportUserComponent}
 ];

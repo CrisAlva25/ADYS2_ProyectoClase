@@ -1,117 +1,85 @@
-<p>report-user works!</p>
 <div class="wrapper bg-light">
-    <div class="sticky-top">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
-            <button class="btn btn-outline-danger my-2 my-sm-0 mx-2" type="button">SignOut</button>
-          </form>
-        </div>
-      </nav>
-    </div>
-      
+
+    <app-nav-bar></app-nav-bar>
+
     <!-- Aqui empieza el album -->
     <div class="album">
-      <h1 class="jumbotron-heading text-center py-3 my-2"><strong>502 ParkingLot</strong></h1>
-      <div class="container py-3">
-        <div class="row">
-  
-          <div *ngFor="let usuario of listaUsuarios; " class="col-md-4">
-            
-              
-              <div *ngIf="usuario.rol==='regular'" >
-                <div class="card mb-4 box-shadow">
-                    <button class="btn btn-light" data-toggle="modal"  data-target="#infoModal" (click)="changeCurrentLot(usuario)">
-                      <img class="card-img-top" data-src="{{usuario.photo}}" alt="Card image cap">
-                      <div class="card-body">
-                        <h6 class="card-text">
-                          {{usuario.email }}</h6>
-                        <div class="d-flex justify-content-between align-items-center">
-                          <div class="btn-group">
-                            <!--<button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"  data-target="#infoModal">Detalles</button>-->
-                          </div>
+        <h1 class="jumbotron-heading text-center py-3 my-2"><strong>502 ParkingLot</strong></h1>
+        <div class="container py-3">
+            <div class="row">
+
+                <div *ngFor="let usuario of listaUsuarios; " class="col-md-4">
+
+
+                    <div *ngIf="usuario.rol==='regular'">
+                        <div class="card mb-4 box-shadow">
+                            <button class="btn btn-light" data-toggle="modal" data-target="#infoModal"
+                                (click)="changeCurrentLot(usuario)">
+                                <img class="card-img-top" data-src="{{usuario.photo}}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h6 class="card-text">
+                                        {{usuario.email}}</h6>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <!--<button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"  data-target="#infoModal">Detalles</button>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </button>
                         </div>
-                      </div>
-                    </button>
-                  </div>
-              </div>
-          
-          </div>
-  
+                    </div>
+
+                </div>
+
+            </div>
         </div>
-      </div>
     </div>
     <!-- Aqui termina el album -->
-  
+
     <!-- Aqui Comienza modal current parqueo -->
-    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="profilePicTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="profilePicTitle">{{currentLot.email}}</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" #infoClose hidden>
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-          
-          <div class="container">
-            <div class="form-group my-2">
-              <div class="form-group">
-                <label for="editNombre">Name</label>
-                <input type="text" class="form-control" id="editNombre" [(ngModel)]="currentLot.nombreUser" disabled>
-              </div>
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="profilePicTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profilePicTitle">{{currentLot.email}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" #infoClose hidden>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container">
+                        <div class="form-group my-2">
+                            <div class="form-group">
+                                <label for="editNombre">Name</label>
+                                <input type="text" class="form-control" id="editNombre"
+                                    [(ngModel)]="currentLot.nombreUser" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="editCorreo">Email</label>
+                                <input type="text" class="form-control" id="editCorreo" [(ngModel)]="currentLot.email"
+                                    disabled>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+                    <button type="button" class="btn btn-danger" (click)="reportUser()">Reportar</button>
+                    <!--<button type="button" class="btn btn-dark">Visitar</button>-->
+                </div>
             </div>
-            <div class="form-group">
-              <div class="form-group">
-                <label for="editCorreo">Email</label>
-                <input type="text" class="form-control" id="editCorreo" [(ngModel)]="currentLot.email" disabled>
-              </div>
-            </div>
-  
-          </div>
-          
         </div>
-          
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-            <button type="button" class="btn btn-danger" (click)="reportUser()">Reportar</button>
-            <!--<button type="button" class="btn btn-dark">Visitar</button>-->
-           </div>
-        </div>
-      </div>
     </div>
     <!-- Aqui Termina modal current parqueo -->
-  
+
     <!-- Publicar Noticias -->
-    
+
     <!-- Terminar publicar noticia -->
-  </div>
+</div>

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { RestService } from '../servicios/rest.service';
-import { NotifierService } from 'angular-notifier';
 import { AngularFireStorage } from '@angular/fire/storage';
 const REQUEST_ADDRESS = 'all-parking';
 
@@ -10,7 +9,6 @@ const REQUEST_ADDRESS = 'all-parking';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  private readonly notifier: NotifierService;
   currentLot = {
     id: 'lasdkfnasd',
     idParking: 'asa',
@@ -37,10 +35,9 @@ export class DashboardComponent implements OnInit {
   @ViewChild('infoClose', { static: false }) infoClose: ElementRef;
   @ViewChild('newsClose', { static: false }) newsClose: ElementRef;
 
-  constructor(notifierService: NotifierService,
-    private rest: RestService,
+  constructor(private rest: RestService,
     private storage: AngularFireStorage) {
-    let observer = this.rest.GetRequest(REQUEST_ADDRESS).subscribe( res => {
+    /*let observer = this.rest.GetRequest(REQUEST_ADDRESS).subscribe( res => {
       res.forEach(user => {
         if (user.block === false) {
           this.parqueos.push(user);
@@ -49,13 +46,11 @@ export class DashboardComponent implements OnInit {
       });
       console.log(sessionStorage.getItem('user'));
       //console.log(this.parqueos);
-    });
-
-    this.notifier = notifierService;
+    });*/
   }
 
   ngOnInit(): void {
-    //this.getParqueos();
+    this.getParqueos();
   }
 
   async getParqueos() {
@@ -87,6 +82,7 @@ export class DashboardComponent implements OnInit {
   changeCurrentLot(parqueo) {
     this.currentLot = parqueo;
   }
+
   reportParking(): void {
     console.log(this.currentLot);
     const user = JSON.parse(sessionStorage.getItem('user'));

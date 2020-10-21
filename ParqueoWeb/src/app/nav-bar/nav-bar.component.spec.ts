@@ -1,24 +1,23 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { FeedComponent } from './feed.component';
+import { NavBarComponent } from './nav-bar.component';
 
-describe('FeedComponent', () => {
-    let component: FeedComponent;
-    let fixture: ComponentFixture<FeedComponent>;
+describe('NavBarComponent', () => {
+    let component: NavBarComponent;
+    let fixture: ComponentFixture<NavBarComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [FormsModule, HttpClientTestingModule, RouterTestingModule.withRoutes([])],
-            declarations: [FeedComponent]
+            imports: [FormsModule, RouterTestingModule.withRoutes([])],
+            declarations: [NavBarComponent]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(FeedComponent);
+        fixture = TestBed.createComponent(NavBarComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

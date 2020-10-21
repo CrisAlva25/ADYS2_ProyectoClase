@@ -9,8 +9,6 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
-
-  private readonly notifier: NotifierService;
   currentNew = { address: 'Lote 10',
                  username: "Brandon",
                  user: "",
@@ -27,9 +25,8 @@ export class FeedComponent implements OnInit {
   //esta variable sirve para controlar el modal
   @ViewChild('infoClose', { static: false }) infoClose: ElementRef;
 
-  constructor(private rest: RestService, notifierService: NotifierService)
+  constructor(private rest: RestService)
   {
-    this.notifier = notifierService;
     this.getListNotices();
   }
 
