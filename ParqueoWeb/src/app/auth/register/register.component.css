@@ -1,8 +1,8 @@
 .wrapper {
-    height: 100vh;
+    height: 92.5vh;
     display: flex;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -15,10 +15,10 @@
     /*color: #777;*/
     padding-bottom: 15px;
     text-align: center;
-  	font-size: 13px; 
+  	font-size: 13px;
 }
 
-.login-btn {        
+.login-btn {
     font-size: 15px;
     font-weight: bold;
 }
@@ -38,8 +38,8 @@
 .social-btn .btn {
     margin: 10px 0;
     font-size: 15px;
-    text-align: left; 
-    line-height: 24px;       
+    text-align: left;
+    line-height: 24px;
 }
 .social-btn .btn i {
     float: left;

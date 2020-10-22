@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto" *ngIf="rol != null">
+            <ul class="navbar-nav mr-auto" *ngIf="rol != null && rol != 'admin'">
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/dashboard']">Parqueos</a>
                 </li>
@@ -15,7 +15,10 @@
                 </li>
             </ul>
 
-            <ul class="navbar-nav mr-auto" *ngIf="rol == null">
+            <ul class="navbar-nav mr-auto" *ngIf="rol == null || rol == 'admin'">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/admin']">Administracion</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/unlock-parking']">Parqueos Bloqueados</a>
                 </li>
@@ -27,7 +30,7 @@
                 </li>
             </ul>
 
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" *ngIf="rol != null">
                 <button class="btn btn-outline-danger my-2 my-sm-0 mx-2" (click)="onLogout()"
                     type="button">SignOut</button>
             </form>

@@ -22,6 +22,8 @@ import { FeedComponent } from './feed/feed.component';
 import { NotifierModule } from "angular-notifier";
 import { ReportUserComponent } from './report-user/report-user.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { NavBarInicioComponent } from './welcome/nav-bar-inicio/nav-bar-inicio.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     RequestManagementComponent,
     FeedComponent,
     ReportUserComponent,
-    NavBarComponent
+    NavBarComponent,
+    WelcomeComponent,
+    NavBarInicioComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,6 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     AngularFireAuthModule
   ],
   providers: [RestService,NotifierModule, Title, AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
