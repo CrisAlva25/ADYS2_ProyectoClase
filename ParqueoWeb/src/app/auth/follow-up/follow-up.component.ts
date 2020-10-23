@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/servicios/rest.service';
-import { getNotify, Notify } from "../../interface/Notify";
+import { getNotify, Notify } from "../../interface/solid/notify/Notify";
 import { AngularFireStorage } from "@angular/fire/storage";
 import { Observable } from 'rxjs';
 
@@ -39,7 +39,7 @@ export class FollowUpComponent implements OnInit {
   @ViewChild('dpiClose', {static: false}) dpiClose: ElementRef;
   @ViewChild('policeClose', {static: false}) policeClose: ElementRef;
   @ViewChild('termsClose', {static: false}) termsClose: ElementRef;
-  
+
   ngOnInit(): void {
     this.user = JSON.parse(sessionStorage.getItem('user'));
     this.getParqueo();
@@ -67,7 +67,7 @@ export class FollowUpComponent implements OnInit {
 
   showPreview(event: any, option: number) {
     if (event == null) return;
-    
+
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
       reader.onload = (e: any) => this.datos[option-1].src = e.target.result;
@@ -79,7 +79,7 @@ export class FollowUpComponent implements OnInit {
   async uploadPhoto(option: number) {
     this.clearNotify();
     if(option < 1) return;
-    
+
     // definiendo datos
     let path = `${this.datos[option-1].type}/${this.user.id}_${new Date().getTime()}`;
     let file = this.datos[option-1].selected;
@@ -126,9 +126,9 @@ export class FollowUpComponent implements OnInit {
       this.acceptTerms = true;
       this.notify = getNotify(true, 'success', '', 'Gracias por aceptar los terminos y condiciones');
     } catch (error) {
-      
+
     }
-    
+
     this.closeModal(this.termsClose);
   }
 
