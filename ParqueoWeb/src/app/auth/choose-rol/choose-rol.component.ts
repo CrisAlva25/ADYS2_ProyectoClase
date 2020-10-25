@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestService } from 'src/app/servicios/rest.service';
-import { Notify, getNotify } from "../../interface/Notify";
+import { Notify, getNotify } from "../../interface/solid/notify/Notify";
 
 const REQUEST_ROL = 'update-rol';
 const REQUEST_PARK = 'get-parking';
@@ -36,7 +36,7 @@ export class ChooseRolComponent implements OnInit {
   }
 
   onRegular() {
-    this.notify = getNotify(true, 'success', 'Usuario regular', 
+    this.notify = getNotify(true, 'success', 'Usuario regular',
     'El usuario habitual puede publicar noticias, marcar parqueo, buscar parqueo por dirección, etc. Además, puede denunciar a los usuarios por mal uso.');
     this.rol = 'regular';
   }
@@ -47,7 +47,7 @@ export class ChooseRolComponent implements OnInit {
       sessionStorage.setItem('user', JSON.stringify(this.user));
       this.confirmClose.nativeElement.click();
 
-      
+
       if(this.navegacion === 'register') {
         sessionStorage.clear();
         this.router.navigate(['/login']);
@@ -59,7 +59,7 @@ export class ChooseRolComponent implements OnInit {
         } else {
           this.router.navigate(['/followup']);
         }
-        
+
       } else {
         this.router.navigate(['/dashboard']);
       }
