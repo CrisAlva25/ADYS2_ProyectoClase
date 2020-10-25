@@ -21,13 +21,13 @@ export class LoginComponent implements OnInit {
     public notify: Notify;
     public usr: ICredential;
 
-    constructor(private titleService: Title,
+    constructor(//private titleService: Title,
         public auth: AuthService,
         public router: Router,
         public rest: RestService) { }
 
     ngOnInit(): void {
-        this.titleService.setTitle("Login - 502PL");
+        //this.titleService.setTitle("Login - 502PL");
         this.notify = {};
         this.usr = { email: '', password: '', provider: ''}
     }

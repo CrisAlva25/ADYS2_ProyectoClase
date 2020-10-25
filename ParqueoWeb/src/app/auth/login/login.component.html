@@ -1,5 +1,4 @@
 <app-nav-bar-inicio></app-nav-bar-inicio>
-
 <div class="wrapper bg-dark">
     <div class="mx-auto">
         <!--col-md-3 -->
@@ -8,13 +7,13 @@
                 <h3 class="text-center">502PL Iniciar Sesion</h3>
                 <div class="or-seperator py-1"></div>
                 <div class="text-center social-btn">
-                    <button class="btn btn-facebook btn-block" (click)="onLoginFacebook()"><i
+                    <button id="facebookButton" class="btn btn-facebook btn-block" (click)="onLoginFacebook()"><i
                             class="fa fa-facebook"></i> Iniciar sesion con <b>Facebook</b></button>
-                    <button class="btn btn-google btn-block" (click)="onLoginGoogle()"><i class="fa fa-google"></i>
+                    <button id="googleButton" class="btn btn-google btn-block" (click)="onLoginGoogle()"><i class="fa fa-google"></i>
                         Iniciar sesion con <b>Google</b></button>
                 </div>
                 <div class="or-seperator py-1"></div>
-                <div class="alert alert-danger" role="alert" *ngIf="notify.active">
+                <div id="alertDanger" class="alert alert-danger" role="alert" *ngIf="notify.active">
                     {{notify.message}}
                 </div>
                 <form>
@@ -25,7 +24,7 @@
                                     <span class="fa fa-user"></span>
                                 </span>
                             </div>
-                            <input type="email" class="form-control" name="email" placeholder="Correo"
+                            <input id="inputEmail" type="email" class="form-control" name="email" placeholder="Correo"
                                 [(ngModel)]="usr.email" required>
                         </div>
                     </div>
@@ -36,19 +35,20 @@
                                     <i class="fa fa-lock"></i>
                                 </span>
                             </div>
-                            <input type="password" class="form-control" name="password" placeholder="Contraseña"
-                                [(ngModel)]="usr.password" required>
+                            <input id="inputPassword" type="password" class="form-control" name="password"
+                                placeholder="Contraseña" [(ngModel)]="usr.password" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-success btn-block login-btn"
+                        <button id="loginButton" type="button" class="btn btn-success btn-block login-btn"
                             (click)="onLoginEmail()">Iniciar</button>
                     </div>
                 </form>
             </div>
             <div class="text-muted hint-text">
                 No tengo una cuenta?
-                <a [routerLink]="['/register']" class="text-success">Registrar!</a>
+                <a id="registerButton" [routerLink]="['/register']"
+                    class="text-success">Registrar!</a>
             </div>
         </div>
     </div>

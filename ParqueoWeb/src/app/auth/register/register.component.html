@@ -7,7 +7,7 @@
             <div class="card-body">
                 <h2 class="text-center">502PL Registrar</h2>
                 <div class="or-seperator py-1"></div>
-                <div class="alert {{notify.type === 'success'? 'alert-success': 'alert-danger'}}" role="alert"
+                <div id="alertDanger" class="alert {{notify.type === 'success'? 'alert-success': 'alert-danger'}}" role="alert"
                     *ngIf="notify.active">
                     {{notify.message}}
                 </div>
@@ -19,7 +19,7 @@
                                     <span class="fa fa-user"></span>
                                 </span>
                             </div>
-                            <input type="email" class="form-control" name="email" placeholder="Correo"
+                            <input id="inputEmail" type="email" class="form-control" name="email" placeholder="Correo"
                                 [(ngModel)]="usr.email" required>
                         </div>
                     </div>
@@ -30,26 +30,26 @@
                                     <i class="fa fa-lock"></i>
                                 </span>
                             </div>
-                            <input type="password" class="form-control" name="password" placeholder="Contraseña"
+                            <input id="inputPassword" type="password" class="form-control" name="password" placeholder="Contraseña"
                                 [(ngModel)]="usr.password" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-success btn-block login-btn"
+                        <button id="registerButton" type="button" class="btn btn-success btn-block login-btn"
                             (click)="onRegister()">Registrar</button>
                     </div>
                 </form>
                 <div class="or-seperator py-1"></div>
                 <div class="text-center social-btn">
-                    <button class="btn btn-facebook btn-block" (click)="onRegisterFacebook()"><i
+                    <button id="facebookButton" class="btn btn-facebook btn-block" (click)="onRegisterFacebook()"><i
                             class="fa fa-facebook"></i> Registrar con <b>Facebook</b></button>
-                    <button class="btn btn-google btn-block" (click)="onRegisterGoogle()"><i class="fa fa-google"></i>
+                    <button id="googleButton" class="btn btn-google btn-block" (click)="onRegisterGoogle()"><i class="fa fa-google"></i>
                         Registrar con <b>Google</b></button>
                 </div>
             </div>
             <div class="text-muted hint-text">
                 Tiene usted una cuenta?
-                <a [routerLink]="['/login']" class="text-success">Iniciar sesion!</a>
+                <a id="loginButton" [routerLink]="['/login']" class="text-success">Iniciar sesion!</a>
             </div>
         </div>
     </div>

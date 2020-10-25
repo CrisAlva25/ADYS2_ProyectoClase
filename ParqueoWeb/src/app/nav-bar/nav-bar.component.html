@@ -1,6 +1,9 @@
 <div class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" [routerLink]="['/']">502 ParkingLot</a>
+
+        <a class="navbar-brand" [routerLink]="['/dashboard']" *ngIf="rol != null && rol != 'admin'">502 ParkingLot</a>
+        <a class="navbar-brand" [routerLink]="['/admin']" *ngIf="rol == null || rol == 'admin'">502 ParkingLot</a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,17 +11,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto" *ngIf="rol != null && rol != 'admin'">
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/dashboard']">Parqueos</a>
+                    <a id="linkParqueos" class="nav-link" [routerLink]="['/dashboard']">Parqueos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/noticias']">Noticias</a>
+                    <a id="linkNoticias" class="nav-link" [routerLink]="['/noticias']">Noticias</a>
                 </li>
             </ul>
 
             <ul class="navbar-nav mr-auto" *ngIf="rol == null || rol == 'admin'">
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/admin']">Administracion</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/unlock-parking']">Parqueos Bloqueados</a>
                 </li>
@@ -31,7 +31,7 @@
             </ul>
 
             <form class="form-inline my-2 my-lg-0" *ngIf="rol != null">
-                <button class="btn btn-outline-danger my-2 my-sm-0 mx-2" (click)="onLogout()"
+                <button id="logoutButton" class="btn btn-outline-danger my-2 my-sm-0 mx-2" (click)="onLogout()"
                     type="button">SignOut</button>
             </form>
         </div>
