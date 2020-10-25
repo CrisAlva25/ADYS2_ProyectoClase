@@ -16,6 +16,7 @@ const REQUEST_ADDRESS = 'register';
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+    title = "Login - 502PL";
     public notify: Notify;
     public usr: ICredential;
 

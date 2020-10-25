@@ -7,6 +7,7 @@ import { getNotify, Notify } from "../../interface/solid/notify/Notify";
 import { Singleton } from "../../interface/patrones/Singleton";
 import { ICredential } from "../../interface/solid/usuario/ICredential";
 import { UserFunction } from "../../interface/solid/usuario/User";
+import { Title } from '@angular/platform-browser';
 
 const REQUEST_LOGIN = 'login';
 const REQUEST_PARK = 'get-parking';
@@ -20,11 +21,13 @@ export class LoginComponent implements OnInit {
     public notify: Notify;
     public usr: ICredential;
 
-    constructor(public auth: AuthService,
+    constructor(private titleService: Title,
+        public auth: AuthService,
         public router: Router,
         public rest: RestService) { }
 
     ngOnInit(): void {
+        this.titleService.setTitle("Login - 502PL");
         this.notify = {};
         this.usr = { email: '', password: '', provider: ''}
     }
