@@ -9,6 +9,7 @@ import { NotifierService } from 'angular-notifier';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
+  private readonly notifier: NotifierService;
   currentNew = { address: 'Lote 10',
                  username: "Brandon",
                  user: "",
@@ -21,12 +22,15 @@ export class FeedComponent implements OnInit {
   noticias = [];
 
   currentPhoto = 0;
+  currentVoteUp = 0;
+  currentVoteDown = 0;
 
   //esta variable sirve para controlar el modal
   @ViewChild('infoClose', { static: false }) infoClose: ElementRef;
 
-  constructor(private rest: RestService)
+  constructor(private rest: RestService,notifierService: NotifierService)
   {
+    this.notifier = notifierService;
     this.getListNotices();
   }
 
@@ -81,6 +85,58 @@ export class FeedComponent implements OnInit {
     });
 
   }
+  voteUp() {
+    console.log(this.currentNew);
+    const user = JSON.parse(sessionStorage.getItem('user'));
+
+    const VOTE_ADDRESS = "post-voteNoticia";
+
+    let info = {
+      idUserRegular: user.id,
+      idUserParking: this.currentNew.parkingLot,
+      idParkingNoticia: this.currentNew._id,
+      flag: true
+    };
+
+    let observer = this.rest.PostRequest(VOTE_ADDRESS, info).subscribe(res => {
+      this.notifier.notify('success', 'gracias por su voto up');
+      this.getNumberVotes();
+    });
+  }
+
+  voteDown() {
+    console.log(this.currentNew);
+    const user = JSON.parse(sessionStorage.getItem('user'));
+
+    const VOTE_ADDRESS = "post-voteNoticia";
+
+    let info = {
+      idUserRegular: user.id,
+      idUserParking: this.currentNew.parkingLot,
+      idParkingNoticia: this.currentNew._id,
+      flag: false
+    };
+
+    let observer = this.rest.PostRequest(VOTE_ADDRESS, info).subscribe(res => {
+      this.notifier.notify('success', 'gracias por su voto down');
+      this.getNumberVotes();
+    });
+  }
+  getNumberVotes() {
+    let info = {
+      idParkingNoticia: this.currentNew._id
+    }
+    
+    const COUNT_VOTE_ADDRESS = "post-voteCounting";
+
+    let observer = this.rest.PostRequest(COUNT_VOTE_ADDRESS, info).subscribe(res => {
+      this.currentVoteUp = res.like;
+      this.currentVoteDown = res.dislike;
+
+      console.log(res);
+    });
+  }
+
 
 }
 
