@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
   private readonly notifier: NotifierService;
 
   currentLot = {
-    _id: 'lasdkfnasd',
+    id: 'lasdkfnasd',
     idParking: 'asa',
     photo: 'https://cdn.ticbeat.com/src/uploads/2018/02/vender-fotos-por-internet-810x540.jpeg',
     name: '',
@@ -108,6 +108,30 @@ export class DashboardComponent implements OnInit {
     this.newsClose.nativeElement.click();
   }
 
+  reportParking(): void {
+    console.log(this.currentLot);
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    const json = {
+      idRegular: user.id,
+      //emailRegular: user.em,
+      idParking: this.currentLot.id
+    }
+    console.log('id de  parq '+ this.currentLot.idParking);
+    console.log('id de _id '+ this.currentLot.id);
+    console.log(json);
+    let observer = this.rest.PostRequest('post-reportParking',json).subscribe( res => {
+      console.log(res);
+      if(res.success===false){
+        alert('error: '+ 'usted ya reporto este parqueo');
+      }else{
+        alert('success: '+'parqueo reportado');
+      }
+      //console.log(sessionStorage.getItem('user'));
+      //console.log(this.parqueos);
+    });
+
+  }
+
   loadNewsImages(event: any) {
     if (!event.target.files || event.target.files.length < 1) {
       return;
@@ -128,7 +152,7 @@ export class DashboardComponent implements OnInit {
   }
 
   async publish() {
-    this.noticia.parkingLot = this.currentLot._id;
+    this.noticia.parkingLot = this.currentLot.id;
     const user = JSON.parse(sessionStorage.getItem('user'));
     this.noticia.user = user.id;
 
