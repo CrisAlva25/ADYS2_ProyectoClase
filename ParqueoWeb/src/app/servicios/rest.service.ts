@@ -27,6 +27,11 @@ export class RestService {
     console.log(serverAddress);
     return this.httpClient.post<any>(address + serverAddress, info, httpOptions);
   }
+  
+  PutRequest(serverAddress: string, info: object): Observable<any> {
+    return this.httpClient.put<any>(address + serverAddress, info, httpOptions);
+  }
+
 
   GetRequestServer2(serverAddress2: string): Observable<any> {
     return this.httpClient.get<any>(address2 + serverAddress2, httpOptions);

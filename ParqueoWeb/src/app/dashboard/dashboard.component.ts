@@ -223,5 +223,21 @@ export class DashboardComponent implements OnInit {
   }
 
 
+  makeFavorite(): void {
+    let id = this.currentLot.id;
+    const user = JSON.parse(sessionStorage.getItem('user'));
+    /* AQUI SE ENVIA LA PETICION AL BACKEND PARA QUE SE MARQUE EL PARQUEO COMO FAVORITO DEL USUARIO */
+    const ADD_FAVORITES_ADDRESS = 'update-addFavoriteParking';
+    let info = {
+      id_user: user.id,
+      id_parking: id
+    };
+    console.log(info);
+    let observer = this.rest.PutRequest(ADD_FAVORITES_ADDRESS, info).subscribe(res => {
+      alert('SUCCESS!!! parqueo agregado a favoritos');
+      this.notifier.notify('success', 'parqueo agregado a favoritos');
+    });
+  }
+
 
 }
