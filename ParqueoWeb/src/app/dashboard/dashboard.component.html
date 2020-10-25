@@ -114,8 +114,7 @@
                     <button type="button" class="btn btn-danger" (click)="reportParking()">Reportar</button>
                     <!--<button type="button" class="btn btn-dark">Visitar</button>-->
                     <button type="button" class="btn btn-primary">Favorite</button>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newsModal"
-                        (click)="closeModal()">Publish</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newsModal" (click)="closeModal()">Publish</button>
                 </div>
             </div>
         </div>
@@ -138,19 +137,18 @@
                         <div class="form-group">
                             <div class="custom-file">
                                 <label for="policePhoto" class="custom-file-label">Upload image</label>
-                                <input #newsPhotos type="file" multiple accept="image/*" class="custom-file-input"
-                                    id="policePhoto">
+                                <input #newsPhotos type="file" multiple accept="image/*" class="custom-file-input" id="policePhoto" (change)="loadNewsImages($event)">
                             </div>
                         </div>
-                        <div class="form-group mx-1">
-                            <textarea class="form-control"></textarea>
+                        <div class="form-group mx-1">   
+                            <textarea class="form-control" [(ngModel)]="noticia.text"></textarea>
                         </div>
                     </form>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" (click)="closeNewsModal()">Cancel</button>
-                    <button type="button" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-primary" (click)="publish()">Guardar</button>
                 </div>
             </div>
         </div>
