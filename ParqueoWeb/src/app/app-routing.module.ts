@@ -15,6 +15,7 @@ import { ReportUserComponent } from './report-user/report-user.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NavBarInicioComponent } from './welcome/nav-bar-inicio/nav-bar-inicio.component';
+import { ListarPromocionesComponent } from './listar-promociones/listar-promociones.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent},
   { path: '', component: WelcomeComponent},
   { path: 'noticias', component: FeedComponent},
-  { path: 'reportUsers', component: ReportUserComponent}
+  { path: 'reportUsers', component: ReportUserComponent},
+  { path: 'listarPromociones', component: ListarPromocionesComponent}
 ];
 
 @NgModule({
