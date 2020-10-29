@@ -30,7 +30,8 @@
                             "@firebase/firestore",
                             "@firebase/functions",
                             "@firebase/performance",
-                            "@firebase/remote-config"
+                            "@firebase/remote-config",
+                            "@firebase/auth"
                         ],
             "assets": [
               "src/favicon.ico",
