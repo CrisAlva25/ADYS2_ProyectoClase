@@ -25,6 +25,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NavBarInicioComponent } from './welcome/nav-bar-inicio/nav-bar-inicio.component';
 import { ListarPromocionesComponent } from './listar-promociones/listar-promociones.component';
+import { BloqueosComponent } from './admin/bloqueos/bloqueos.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ListarPromocionesComponent } from './listar-promociones/listar-promocio
     NavBarComponent,
     WelcomeComponent,
     NavBarInicioComponent,
-    ListarPromocionesComponent
+    ListarPromocionesComponent,
+    BloqueosComponent
   ],
   imports: [
     BrowserModule,
