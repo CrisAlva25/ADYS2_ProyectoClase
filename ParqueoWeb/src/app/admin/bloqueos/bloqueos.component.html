@@ -1,1 +1,21 @@
-<p>bloqueos works!</p>
+<!-- <p>bloqueos works!</p> -->
+
+<div class="col-md-4 offset-md-2">
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <label for="inputState">Identificador Usuario</label>
+                    <input type="text" name="usuarioabloquear" placeholder="ingrese el usuario a bloquear" rows="1" class="form-control" [(ngModel)]="idParqueo">
+                </div>
+                <div class="form-group">
+                    <label for="inputState">lock/unlock</label>
+                    <div class="form-group">
+                        <a class="btn btn-primary mx-2" (click)="ejecutarBloqueo()">Bloquear</a>
+                        <a class="btn btn-success" (click)="ejecutarDesBloqueo()">Desbloquear</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

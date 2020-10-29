@@ -25,6 +25,7 @@ export class RestService {
 
   PostRequest(serverAddress: string, info: object): Observable<any> {
     console.log(serverAddress);
+    console.log(info);
     return this.httpClient.post<any>(address + serverAddress, info, httpOptions);
   }
 
