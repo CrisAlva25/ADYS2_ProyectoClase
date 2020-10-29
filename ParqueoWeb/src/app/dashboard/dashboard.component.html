@@ -1,185 +1,158 @@
 <div class="wrapper bg-light">
-  <div class="sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="button">Search</button>
-          <button class="btn btn-outline-danger my-2 my-sm-0 mx-2" type="button">SignOut</button>
-        </form>
-      </div>
-    </nav>
-  </div>
-    
-  <!-- Aqui empieza el album -->
-  <div class="album">
-    <h1 class="jumbotron-heading text-center py-3 my-2"><strong>502 ParkingLot</strong></h1>
-    <div class="container py-3">
-      <div class="row">
 
-        <div *ngFor="let parqueo of parqueos; " class="col-md-4">
-          
-            
-            <div class="card mb-4 box-shadow">
-              <button class="btn btn-light" data-toggle="modal"  data-target="#infoModal" (click)="changeCurrentLot(parqueo)">
-                <img class="card-img-top" data-src="{{parqueo.photo}}" alt="Card image cap">
-                <div class="card-body">
-                  <h6 class="card-text">{{parqueo.location}}</h6>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <!--<button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"  data-target="#infoModal">Detalles</button>-->
+    <app-nav-bar></app-nav-bar>
+
+    <!-- Aqui empieza el album -->
+    <div class="album">
+        <h1 class="jumbotron-heading text-center py-3 my-2"><strong>502 ParkingLot</strong></h1>
+        <div class="container py-3">
+            <div class="row">
+
+                <div *ngFor="let parqueo of parqueos; " class="col-md-4">
+
+
+                    <div class="card mb-4 box-shadow">
+                        <button class="btn btn-light" data-toggle="modal" data-target="#infoModal"
+                            (click)="changeCurrentLot(parqueo)">
+                            <img class="card-img-top" data-src="{{parqueo.photo}}" alt="Card image cap">
+                            <div class="card-body">
+                                <h6 class="card-text">
+                                    {{ (parqueo.location? parqueo.location + ' ': '') + parqueo.email }}</h6>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <!--<button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"  data-target="#infoModal">Detalles</button>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
                     </div>
-                  </div>
+
                 </div>
-              </button>
+
             </div>
-        
         </div>
-
-      </div>
     </div>
-  </div>
-  <!-- Aqui termina el album -->
+    <!-- Aqui termina el album -->
 
-  <!-- Aqui Comienza modal current parqueo -->
-  <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="profilePicTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="profilePicTitle">{{currentLot.location}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" #infoClose hidden>
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-        
-        <div class="container">
-          
-          <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              
-              <div *ngFor="let photo of currentLot.photos; let i = index">
-                <div class= "{{ currentPhoto === i ? 'carousel-item active' : 'carousel-item'}}">
-                  <img class="d-block w-100" src="{{photo}}" alt="">
+    <!-- Aqui Comienza modal current parqueo -->
+    <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="profilePicTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profilePicTitle">{{currentLot.location}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" #infoClose hidden>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-              </div>
+                <div class="modal-body">
 
-            </div>
+                    <div class="container">
 
-            <a class="carousel-control-prev" role="button" (click)="previous()">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" role="button" (click)="next()">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
 
-          <div class="form-group my-2">
-            <div class="form-group">
-              <label for="editNombre">Name</label>
-              <input type="text" class="form-control" id="editNombre" [(ngModel)]="currentLot.name" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-group">
-              <label for="editCorreo">Email</label>
-              <input type="text" class="form-control" id="editCorreo" [(ngModel)]="currentLot.email" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-group">
-              <label for="editTelefono">Phone number</label>
-              <input type="text" class="form-control" id="editTelefono" [(ngModel)]="currentLot.phone" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-group">
-              <label for="editPassword">Tariff</label>
-              <input type="text" class="form-control" id="editTarifa" [(ngModel)]="currentLot.tariff" disabled>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-group">
-              <label for="editPassword">Available places</label>
-              <input type="number" class="form-control" id="editSpaces" [(ngModel)]="currentLot.numberAvailable" disabled>
-            </div>
-          </div>
+                                <div *ngFor="let photo of currentLot.photos; let i = index">
+                                    <div class="{{ currentPhoto === i ? 'carousel-item active' : 'carousel-item'}}">
+                                        <img class="d-block w-100" src="{{photo}}" alt="">
+                                    </div>
+                                </div>
 
+                            </div>
+
+                            <a class="carousel-control-prev" role="button" (click)="previous()">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" role="button" (click)="next()">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+
+                        <div class="form-group my-2">
+                            <div class="form-group">
+                                <label for="editNombre">Name</label>
+                                <input type="text" class="form-control" id="editNombre" [(ngModel)]="currentLot.name"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="editCorreo">Email</label>
+                                <input type="text" class="form-control" id="editCorreo" [(ngModel)]="currentLot.email"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="editTelefono">Phone number</label>
+                                <input type="text" class="form-control" id="editTelefono" [(ngModel)]="currentLot.phone"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="editPassword">Tariff</label>
+                                <input type="text" class="form-control" id="editTarifa" [(ngModel)]="currentLot.tariff"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="editPassword">Available places</label>
+                                <input type="number" class="form-control" id="editSpaces"
+                                    [(ngModel)]="currentLot.numberAvailable" disabled>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+                    <button type="button" class="btn btn-danger" (click)="reportParking()">Reportar</button>
+                    <!--<button type="button" class="btn btn-dark">Visitar</button>-->
+                    <button type="button" class="btn btn-primary" (click)="makeFavorite()">Favorito</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newsModal" (click)="closeModal()">Publish</button>
+                </div>
+            </div>
         </div>
-        
-      </div>
-        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-          <button type="button" class="btn btn-danger" >Report</button>
-          <!--<button type="button" class="btn btn-dark">Visitar</button>-->
-          <button type="button" class="btn btn-primary" >Favorite</button>
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newsModal" (click)="closeModal()">Publish</button>
-        </div>
-      </div>
     </div>
-  </div>
-  <!-- Aqui Termina modal current parqueo -->
+    <!-- Aqui Termina modal current parqueo -->
 
-  <!-- Publicar Noticias -->
-  <div class="modal fade" id="newsModal" tabindex="-1" role="dialog" aria-labelledby="policeTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="policeTitle">What are you thinking?</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" #newsClose>
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          
-          <form>
-            <div class="form-group">
-              <div class="custom-file">
-                <label for="policePhoto" class="custom-file-label">Upload image</label>
-                <input #newsPhotos type="file" multiple accept="image/*" class="custom-file-input" id="policePhoto" >
-              </div>
+    <!-- Publicar Noticias -->
+    <div class="modal fade" id="newsModal" tabindex="-1" role="dialog" aria-labelledby="policeTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="policeTitle">What are you thinking?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" #newsClose>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form>
+                        <div class="form-group">
+                            <div class="custom-file">
+                                <label for="policePhoto" class="custom-file-label">Upload image</label>
+                                <input #newsPhotos type="file" multiple accept="image/*" class="custom-file-input" id="policePhoto" (change)="loadNewsImages($event)">
+                            </div>
+                        </div>
+                        <div class="form-group mx-1">   
+                            <textarea class="form-control" [(ngModel)]="noticia.text"></textarea>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="closeNewsModal()">Cancel</button>
+                    <button type="button" class="btn btn-primary" (click)="publish()">Guardar</button>
+                </div>
             </div>
-            <div class="form-group mx-1">
-              <textarea class="form-control" ></textarea>
-            </div> 
-          </form>
-
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" (click)="closeNewsModal()">Cancel</button>
-          <button type="button" class="btn btn-primary" >Save</button>
-        </div>
-      </div>
     </div>
-  </div>
-  <!-- Terminar publicar noticia -->
+    <!-- Terminar publicar noticia -->
 </div>

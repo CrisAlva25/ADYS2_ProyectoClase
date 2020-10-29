@@ -1,21 +1,26 @@
+<app-nav-bar-inicio></app-nav-bar-inicio>
+
 <div class="wrapper bg-dark">
-    <div class="mx-auto"><!--col-md-3-->
+    <div class="mx-auto">
+        <!--col-md-3-->
         <div class="form rounded">
             <div class="card-body">
                 <h2 class="text-center">502PL Registrar</h2>
                 <div class="or-seperator py-1"></div>
-                <div class="alert {{notify.type === 'success'? 'alert-success': 'alert-danger'}}" role="alert" *ngIf="notify.active">
+                <div id="alertDanger" class="alert {{notify.type === 'success'? 'alert-success': 'alert-danger'}}" role="alert"
+                    *ngIf="notify.active">
                     {{notify.message}}
                 </div>
                 <form>
                     <div class="form-group">
-                        <div class="input-group">                
+                        <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <span class="fa fa-user"></span>
-                                </span>                    
+                                </span>
                             </div>
-                            <input type="email" class="form-control" name="email" placeholder="Correo" [(ngModel)]="usuario.email" required>
+                            <input id="inputEmail" type="email" class="form-control" name="email" placeholder="Correo"
+                                [(ngModel)]="usr.email" required>
                         </div>
                     </div>
                     <div class="form-group">
@@ -23,24 +28,28 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <i class="fa fa-lock"></i>
-                                </span>                    
+                                </span>
                             </div>
-                            <input type="password" class="form-control" name="password" placeholder="Contraseña" [(ngModel)]="usuario.password" required>
+                            <input id="inputPassword" type="password" class="form-control" name="password" placeholder="Contraseña"
+                                [(ngModel)]="usr.password" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="button" class="btn btn-success btn-block login-btn" (click)="onRegister()">Registrar</button>
+                        <button id="registerButton" type="button" class="btn btn-success btn-block login-btn"
+                            (click)="onRegister()">Registrar</button>
                     </div>
                 </form>
                 <div class="or-seperator py-1"></div>
                 <div class="text-center social-btn">
-                    <button class="btn btn-facebook btn-block" (click)="onRegisterFacebook()"><i class="fa fa-facebook"></i> Registrar con <b>Facebook</b></button>
-                    <button class="btn btn-google btn-block" (click)="onRegisterGoogle()"><i class="fa fa-google"></i> Registrar con <b>Google</b></button>
+                    <button id="facebookButton" class="btn btn-facebook btn-block" (click)="onRegisterFacebook()"><i
+                            class="fa fa-facebook"></i> Registrar con <b>Facebook</b></button>
+                    <button id="googleButton" class="btn btn-google btn-block" (click)="onRegisterGoogle()"><i class="fa fa-google"></i>
+                        Registrar con <b>Google</b></button>
                 </div>
             </div>
             <div class="text-muted hint-text">
-                Tiene usted una cuenta? 
-                <a [routerLink]="['/login']" class="text-success">Iniciar sesion!</a>
+                Tiene usted una cuenta?
+                <a id="loginButton" [routerLink]="['/login']" class="text-success">Iniciar sesion!</a>
             </div>
         </div>
     </div>

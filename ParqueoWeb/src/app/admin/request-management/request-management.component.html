@@ -1,8 +1,10 @@
 <div class="wrapper">
+    <app-nav-bar></app-nav-bar>
+
     <div class="container text-center">
         <!--<main role="main" class="inner cover">
             <h1 class="cover-heading my-3">Solicitudes</h1>
-            
+
             <button data-toggle="modal" data-target="#detailsModal" hidden #openModal></button>
             <div *ngFor="let lot of parkingLots; let i = index" class="card text-center text-dark bg-secondary my-4">
                 <div class="card-header text-white">
@@ -14,22 +16,22 @@
                     <a class="btn btn-success" (click)="authorize(i)">Aceptar</a>
                 </div>
             </div>
-            
+
         </main>
         -->
-        
+
         <h1 class="cover-heading my-3">Solicitudes</h1>
         <button data-toggle="modal" data-target="#detailsModal" hidden #openModal></button>
         <div class="row">
             <div *ngFor="let lot of parkingLots; let i = index" class="col-md-4">
                 <div class="card text-center text-dark bg-secondary my-4">
                     <div class="card-header text-white">
-                        {{lot.name}}
+                        {{ lot.email }}
                         <span *ngIf='lot.authorized' class="mx-2 fa fa-check"></span>
                     </div>
 
                     <div class="card-body bg-light">
-                        <p class="card-text">{{lot.message}}</p>
+                        <p class="card-text">{{ lot.acceptTerm? 'Las condiciones han sido aceptadas': 'Las condiciones no han sido aceptadas' }}</p>
                         <a class="btn btn-primary mx-2" (click)="seeDetails(i)">Detalles</a>
                         <a class="btn btn-success" (click)="authorize(i)">Aceptar</a>
                     </div>
@@ -61,7 +63,7 @@
                             </div>
                             <div class="carousel-item w-100 h-100">
                                 <h5>Antecedentes Policiacos</h5>
-                                <img class="d-block w-100 h-75" src="{{currentLot.records}}" alt="Antecedentes Policiados">
+                                <img class="d-block w-100 h-75" src="{{currentLot.criminalRecords}}" alt="Antecedentes Policiados">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
