@@ -1,0 +1,40 @@
+pipeline {
+   agent any
+   tools {nodejs "node"}
+ 
+
+   stages {
+      stage('Cloning Git') {
+         steps {
+            git 'https://github.com/CrisAlva25/ADYS2_ProyectoClase'
+         }
+      }
+         
+      stage('Install dependencies') {
+         steps {
+            sh 'npm install'
+         }
+      }
+      
+      stage('Build'){
+         steps{
+            echo 'Building...'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "date && hostname"'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "cd  ADYS2_ProyectoClase && sudo git pull origin master"'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "cd  ADYS2_ProyectoClase/ParqueoWeb && sudo npm run ng build --prod --no-warnings"'
+         }
+      }
+      
+      stage('Test') {
+         steps {
+            echo 'Testing... hola mundo'
+         }
+      }
+      
+      stage('Deploy') {
+         steps {
+            echo 'Deploying...'
+         }
+      }
+   }
+}
