@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
             const { user } = await this.auth.authWithGoogle();
             // generar usr
             this.usr = Singleton.getInstance().userFactory.createCredentialsLogin(user.email, password, 'google');
+            console.log(this.usr);
             // login
             this.login();
         } catch (error) {

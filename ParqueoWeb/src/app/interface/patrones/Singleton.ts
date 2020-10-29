@@ -9,4 +9,8 @@ export class Singleton {
             this.instancia = new Singleton();
         return this.instancia;
     }
+
+    constructor() {
+        this.userFactory = new UserFactory();
+    }
 }
