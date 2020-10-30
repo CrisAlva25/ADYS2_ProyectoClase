@@ -11,9 +11,9 @@ describe('DashBoardPage', () => {
     let page: DashBoardPage;
     let usrRegular: string = 'regular@test.com';
     let password: string = '123';
-    let urlWelcome: string = 'http://localhost:4200/';
-    let urlParqueo: string = 'http://localhost:4200/dashboard';
-    let urlNoticias: string = 'http://localhost:4200/noticias';
+    let urlWelcome: string = 'http://ec2-18-222-17-215.us-east-2.compute.amazonaws.com:4200/';
+    let urlParqueo: string = 'http://ec2-18-222-17-215.us-east-2.compute.amazonaws.com:4200/dashboard';
+    let urlNoticias: string = 'http://ec2-18-222-17-215.us-east-2.compute.amazonaws.com:4200/noticias';
 
     beforeEach(() => {
         page = new DashBoardPage();
