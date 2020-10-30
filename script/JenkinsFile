@@ -25,9 +25,16 @@ pipeline {
          }
       }
       
-      stage('Test') {
+      stage('Functional e2e Test') {
          steps {
-            echo 'Testing... hola mundo'
+            echo 'Functional Testing...'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "cd  ADYS2_ProyectoClase/ParqueoWeb && sudo ng e2e"'
+         }
+      }
+      
+      stage('Unit Test') {
+         steps {
+            echo 'Unit Testing...'
             sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "cd  ADYS2_ProyectoClase/ParqueoWeb && sudo ng test --code-coverage --browsers=ChromeHeadless"'
          }
       }
