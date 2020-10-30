@@ -20,7 +20,13 @@ module.exports = function (config) {
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },
-    customLaunchers: {
+    reporters: ['progress', 'kjhtml'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['ChromeHeadless'],
+      customLaunchers: {
         ChromeHeadless: {
            base: 'Chrome',
            flags: [
@@ -31,12 +37,6 @@ module.exports = function (config) {
           ],
         }
     },
-    reporters: ['progress', 'kjhtml'],
-    port: 9876,
-    colors: true,
-    logLevel: config.LOG_INFO,
-    autoWatch: true,
-    browsers: ['Chrome'],
     singleRun: false,
     restartOnFileChange: true
   });
