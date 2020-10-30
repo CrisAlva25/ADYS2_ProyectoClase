@@ -8,8 +8,8 @@ const httpOptions = {
   })
 };
 
-const address = 'http://localhost:3000/';
-const address2 = 'http://localhost:3000/';
+const address = '3.12.74.15:3000/';
+const address2 = '3.12.74.15:3000/';
 
 @Injectable({
   providedIn: 'root'
