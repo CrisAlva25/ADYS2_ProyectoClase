@@ -6,9 +6,9 @@ import { browser } from "protractor";
 describe('WelcomePage', () => {
     // Arrange
     let page: WelcomePage;
-    let urlWelcome: string = 'http://ec2-18-222-17-215.us-east-2.compute.amazonaws.com:4200/';
-    let urlLogin: string = 'http://ec2-18-222-17-215.us-east-2.compute.amazonaws.com:4200/login';
-    let urlRegister: string = 'http://ec2-18-222-17-215.us-east-2.compute.amazonaws.com:4200/register';
+    let urlWelcome: string = 'http://localhost:4200/';
+    let urlLogin: string = 'http://localhost:4200/login';
+    let urlRegister: string = 'http://localhost:4200/register';
 
     beforeEach(() => {
         page = new WelcomePage();

@@ -8,7 +8,7 @@ describe('RegisterPage', () => {
     let page: RegisterPage;
     let usrRegular: string = 'regular@test.com';
     let password: string = '123';
-    let urlLogin: string = 'http://ec2-18-222-17-215.us-east-2.compute.amazonaws.com:4200/login';
+    let urlLogin: string = 'http://localhost:4200/login';
     beforeEach(() => {
         page = new RegisterPage();
         page.navigateTo();

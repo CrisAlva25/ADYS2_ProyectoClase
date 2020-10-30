@@ -10,10 +10,10 @@ describe('LoginPage', () => {
     let usrRegular: string = 'regular@test.com';
     let usrOwner: string = 'owner@test.com';
     let password: string = '123';
-    let urlAdmin: string = 'http://ec2-18-222-17-215.us-east-2.compute.amazonaws.com:4200/admin';
-    let urlRegular: string = 'http://ec2-18-222-17-215.us-east-2.compute.amazonaws.com:4200/dashboard';
-    let urlOwner: string = 'http://ec2-18-222-17-215.us-east-2.compute.amazonaws.com:4200/followup';
-    let urlRegister: string = 'http://ec2-18-222-17-215.us-east-2.compute.amazonaws.com:4200/register';
+    let urlAdmin: string = 'http://localhost:4200/admin';
+    let urlRegular: string = 'http://localhost:4200/dashboard';
+    let urlOwner: string = 'http://localhost:4200/followup';
+    let urlRegister: string = 'http://localhost:4200/register';
     beforeEach(() => {
         page = new LoginPage();
         page.navigateTo();
