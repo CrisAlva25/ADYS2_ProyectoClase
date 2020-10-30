@@ -28,6 +28,7 @@ pipeline {
       stage('Test') {
          steps {
             echo 'Testing... hola mundo'
+            sh 'ssh ubuntu@ec2-18-222-17-215.us-east-2.compute.amazonaws.com "cd  ADYS2_ProyectoClase/ParqueoWeb && sudo ng test --code-coverage --browsers=ChromeHeadless"'
          }
       }
       
